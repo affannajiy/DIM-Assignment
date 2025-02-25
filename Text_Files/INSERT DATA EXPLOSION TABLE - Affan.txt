@@ -59,3 +59,18 @@ INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPe
 SELECT 1 FROM DUAL;
 
 commit;
+
+INSERT ALL --Staff_Reservation
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60001, 'ahmad.zulkarnain@example.com', 140001, 'R001')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60002, 'siti.nurhaliza@example.com', 140002, 'R002')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60003, 'lee.chongwei@example.com', 140003, 'R003')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60004, 'nur.aisyah.rahman@example.com', 140004, 'R004')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60005, 'muhammad.farhan@example.com', 140005, 'R005')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60006, 'lim.wei.sheng@example.com', 140006, 'R006')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60007, 'kavitha.rajendran@example.com', 140007, 'R007')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60008, 'ariff.hakim@example.com', 140008, 'R008')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60009, 'wong.mei.ling@example.com', 140009, 'R009')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60010, 'hafiz.iqbal@example.com', 140010, 'R010')
+SELECT 1 FROM DUAL;
+
+commit;
