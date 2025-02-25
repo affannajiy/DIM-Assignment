@@ -46,6 +46,8 @@ INTO Person (Person_IC_Num, Person_name, Person_age) VALUES ('589175692516', 'Ab
 INTO Person (Person_IC_Num, Person_name, Person_age) VALUES ('107692769173', 'Zack', 27)
 SELECT 1 FROM DUAL; --compulsory for inserting multiple data into one table when using 1 query
 
+commit;
+
 INSERT ALL --inserting data into customer table
     INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                     Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
@@ -119,11 +121,7 @@ VALUES (20010, 'Zack@example.com', '107692769173', 6,
         19.90, 'Takeaway', '01:15:00', 'Solo Meal','889900112')
 SELECT 1 FROM DUAL;
 
-
---command to check if FK is working as intended || have 10 data in CUSTOMER table, when execute this command, it has to have 10 data as well.
-SELECT p.Person_name, p.Person_IC_Num, c.Customer_id, c.Person_IC_Num, c.Customer_dining_purpose
-from Person p
-         join Customer c on c.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL --DATA INJECTION FOR DELIVERY_PERSON
     INTO Delivery_Person(DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate,
@@ -198,10 +196,7 @@ VALUES (30010, 'BCD987456', 'WX7890', '700112087654',
         TO_TIMESTAMP('2025-02-24 12:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2025-02-24 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 9.50, 'FoodPanda')
 SELECT 1 FROM DUAL;
 
---command to check if FK is working as intended || have 10 data in Delivery_Person table, when execute this command, it has to have 10 data as well.
-SELECT p.Person_name, p.Person_IC_Num, dp.Person_IC_Num
-from Person p
-         join Delivery_Person dp on dp.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL --DATA INJECTION FOR EMPLOYEE
     INTO Employee (Employee_id, Person_IC_Num, Employee_HireDate, Employee_EdLevel)
@@ -246,10 +241,7 @@ INTO Employee (Employee_id, Person_IC_Num, Employee_HireDate, Employee_EdLevel)
 VALUES (40020, '800112068901', TO_DATE('2024-07-22', 'YYYY-MM-DD'), 'Diploma in Retail Management')
 SELECT 1 FROM DUAL;
 
---command to check if FK and PK is working
-SELECT p.Person_name, p.Person_IC_Num, emp.Person_IC_Num, emp.Employee_id
-from Person p
-         join Employee emp on emp.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL --DATA INJECTION FOR STAFF
     INTO Staff
@@ -294,10 +286,7 @@ VALUES (60010, 'hafiz.iqbal@blackcaravan.com', 40010, '900102033456',
         'None', 'Sanitation', 'Cleaning Supervisor', 'Cleaner')
 SELECT 1 FROM DUAL;
 
---command to check if FK and PK is working
-SELECT p.Person_name, p.Person_IC_Num, s.Person_IC_Num, s.Employee_id, s.Staff_work_email, s.Staff_id
-from Person p
-         join Staff s on s.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL
     INTO Owner (Owner_id, Owner_tax_no, Person_IC_Num,
@@ -362,9 +351,7 @@ VALUES (50010, 'TX87654321', '800112068901', 40020, 'Optimize workforce',
         33.0, 70000.00, 210000.00, 17.0, 'High', 'Coaching', 'Moderate')
 SELECT 1 FROM DUAL;
 
-SELECT p.Person_name, p.Person_IC_Num, p.Person_age, o.Person_IC_Num, o.Employee_id, o.Owner_tax_no, o.Owner_id
-from Person p
-         join Owner o on o.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL
     INTO Product (Product_id, Product_Availability, Product_Price) VALUES (110001, 'Available', 12.50)
@@ -388,6 +375,8 @@ INTO Product (Product_id, Product_Availability, Product_Price) VALUES (110018, '
 INTO Product (Product_id, Product_Availability, Product_Price) VALUES (110019, 'Available', 20.00)
 INTO Product (Product_id, Product_Availability, Product_Price) VALUES (110020, 'Unavailable', 8.00)
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL
     INTO Food (Food_id, Food_code, Product_id, Food_picture, Food_description,
@@ -451,11 +440,7 @@ VALUES(120010, 'F010', 110010, 'img010.jpg',
        '60', 'Poultry', 'Fried')
 SELECT 1 FROM DUAL;
 
---test code
-SELECT prd.Product_id, f.Food_id, f.Food_code, f.Product_id
-from Product prd
-         join Food f on f.Product_id = prd.Product_id;
-
+commit;
 
 INSERT ALL
     INTO Drink (Drink_id, Drink_code, Product_id, Drink_picture, Drink_cost,
@@ -510,10 +495,7 @@ VALUES (130010, 'D010', 110020, 'Dimg001.jpg', 3.70, '30',
         'Coffee', 'Hot', 'Non-Carbonated', 'Available', '250ml')
 SELECT 1 FROM DUAL;
 
---test code
-SELECT prd.Product_id, d.Drink_id, d.Drink_code, d.Product_id
-from Product prd
-         join Drink d on d.Product_id = prd.Product_id;
+commit;
 
 INSERT ALL --DATA INJECTION FOR STORAGE
     INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
@@ -557,6 +539,8 @@ VALUES (250019, 'STO-20250019', TO_DATE('2021-04-15', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
 VALUES (250020, 'STO-20250020', TO_DATE('2020-03-12', 'YYYY-MM-DD'))
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL --DATA INJECTION FOR SUPPLIER
     INTO Supplier (Supplier_id, Supplier_ssm, Supplier_companyName,
@@ -620,6 +604,8 @@ VALUES (190010, '274910495736 (KT7105938-D)', 'FrozenDelights',
         'Michelle Lee', '012-9990001',
         '303 Frost St, City', 'Frozen Goods', 'Monthly', 'Credit Card', 'michelle@frozendelights.com')
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL --DATA INJECTION FOR INVENTORY
     INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
@@ -695,11 +681,7 @@ VALUES (210010, 'INV1010', 250010,
         'In Stock', 'Oil')
 SELECT 1 FROM DUAL;
 
---test code
-SELECT s.Storage_id, a.Storage_id
-from Storage s
-         join Inventory a on a.Storage_id = s.Storage_id;
-
+commit;
 
 INSERT ALL --DATA INJECTION FOR ASSET
     INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
@@ -774,10 +756,7 @@ VALUES (220010, 'AST2010', 250020, 190010, '274910495736 (KT7105938-D)', 'Applia
         TO_DATE('2024-10-01', 'YYYY-MM-DD'), TO_DATE('2025-10-01', 'YYYY-MM-DD'))
 SELECT 1 FROM DUAL;
 
---test code
-SELECT s.Supplier_id, a.Supplier_id
-from Supplier s
-         join Asset a on a.Supplier_id = s.Supplier_id;
+commit;
 
 INSERT ALL --DATA INJECTION FOR SUPPLIERITEM
     INTO SupplierItem (SupplierItem_id, SupplierItem_code, Supplier_id, Supplier_ssm,
@@ -842,10 +821,7 @@ VALUES (200010, 'SI010', 190010, '274910495736 (KT7105938-D)', 'Canned Tuna', 'S
         16, 4.9, 90.00, TO_DATE('2026-06-30', 'YYYY-MM-DD'), TO_DATE('2025-02-07', 'YYYY-MM-DD'), 50)
 SELECT 1 FROM DUAL;
 
---test code
-SELECT s.Supplier_id, a.Supplier_id
-from Supplier s
-         join SupplierItem a on a.Supplier_id = s.Supplier_id;
+commit;
 
 INSERT ALL --DATA INJECTION FOR FRANCHISE
     INTO Franchise (Franchise_id, Franchise_code, Franchise_contact_num,
@@ -910,7 +886,7 @@ VALUES (240010, 'FRCH-010', '03-5544 6677',
         'Central', 'Food Truck', '20:00:00', 'BBQ Heaven')
 SELECT 1 FROM DUAL;
 
-Commit;
+commit;
 
 INSERT ALL
     INTO Reservation (Reservation_id, Reservation_code, Customer_id,
@@ -1005,10 +981,7 @@ VALUES (140010, 'R010', 20010,
         TO_TIMESTAMP('2025-02-22 20:30:00', 'YYYY-MM-DD HH24:MI:SS'), 14, 4, 'Outdoor seating', 'Casual dinner')
 SELECT 1 FROM DUAL;
 
---test code
-SELECT r.Customer_id, c.Customer_id, c.Person_IC_Num
-from Reservation r
-join Customer c on r.Customer_id = c.Customer_id;
+commit;
 
 INSERT ALL --DATA INJECTION FOR FEEDBACK
     INTO Feedback (Feedback_id, Feedback_Code, Feedback_type,
@@ -1072,6 +1045,8 @@ VALUES (160010, 'FB010', 'Expensive Pricing',
         '19:20:00', TO_DATE('2025-02-12', 'YYYY-MM-DD'), 'The prices are too high for portions.',
         'No immediate action taken', 'Pending', 3.0, 3.0)
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL --DATA INJECTION FOR PROMOTION
     INTO Promotion (Promotion_id, Promotion_refNo, Promotion_date_start,
@@ -1213,15 +1188,6 @@ SELECT 1 FROM DUAL;
 
 commit;
 
---test code
-SELECT o.Franchise_id, f.Franchise_id
-from Franchise f
-         join Orders o ON o.Franchise_id = f.Franchise_id;
-
-SELECT o.Franchise_id, r.Franchise_id
-from Reservation r
-         join Orders o ON o.Franchise_id = r.Franchise_id;
-
 INSERT ALL
     INTO Payment (Payment_id, Payment_transactionRef, Payment_refund_status,
                   Payment_date, Payment_method, Payment_total_amount, Payment_tax, Payment_status,
@@ -1296,6 +1262,8 @@ VALUES (170012, 'TXN012', 'Not Refunded', TO_DATE('2025-02-17', 'YYYY-MM-DD'),
         'Bank Transfer', 3800, 150, 'Completed', 25.00,
         0.0, 180012, 'O012', 190010, '274910495736 (KT7105938-D)', 240002, 'FRCH-002')
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL
     INTO Payslip (Payslip_id, Payslip_code, Payslip_scheduled_time, Payslip_received_time,
@@ -1426,6 +1394,8 @@ VALUES (90010, 'A010', TO_DATE('2025-03-19', 'YYYY-MM-DD'), '8:30:00', '17:30:00
         '-', 1, 'Evening Shift', 240010, 'FRCH-010', 100010, 'P010')
 SELECT 1 FROM DUAL;
 
+commit;
+
 INSERT ALL
     INTO Leave (Leave_id, Leave_code, Leave_start_time, Leave_end_time, Leave_duration_day,
                 Leave_reason, Leave_left, Leave_end_date, Leave_start_date, Leave_duration_hours,
@@ -1478,6 +1448,8 @@ INTO Leave (Leave_id, Leave_code, Leave_start_time, Leave_end_time, Leave_durati
 VALUES (80010, 'L010', '0:00:00', '0:00:00', '31', 'Maternity Leave', 60, TO_DATE('2025-09-01', 'YYYY-MM-DD'),
         TO_DATE('2025-10-31', 'YYYY-MM-DD'), '248', 240010, 'FRCH-010', 100010, 'P010')
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL
     INTO Shift (Shift_id, Shift_code, Shift_start_time, Shift_end_time, Shift_role,
@@ -1541,6 +1513,8 @@ VALUES (70010, 'FLEX010', '10:00:00', '18:00:00', 'Cashier', 'Handling payments'
         TO_DATE('2025-02-01', 'YYYY-MM-DD'), TO_DATE('2025-06-30', 'YYYY-MM-DD'),
         '8:00:00', 240010, 'FRCH-010', 100010, 'P010')
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL
     INTO Asset_Log (AssetLog_id, AssetLog_code, AssetLog_usage_start_time, AssetLog_usage_end_time,

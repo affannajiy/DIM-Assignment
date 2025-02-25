@@ -1,398 +1,3 @@
---NEW INSERT & CREATE
-
-CREATE TABLE Person (
-                        Person_IC_Num VARCHAR2(20) PRIMARY KEY,
-                        Person_name varchar2(100),
-                        Person_age INT
-);
-
-CREATE TABLE Customer (
-                          Customer_id INT,
-                          Customer_personal_email VARCHAR(100),
-                          Person_IC_Num VARCHAR2(20),
-                          Customer_table_number INT,
-                          Customer_walk_in_date TIMESTAMP,
-                          Customer_walk_out_date TIMESTAMP,
-                          Customer_total_spent DECIMAL(20,2),
-                          Customer_dining_option VARCHAR2(255),
-                          Customer_time_spent VARCHAR2(20),
-                          Customer_dining_purpose VARCHAR2(255),
-                          Customer_phoneNumber  VARCHAR2(20),
-                          PRIMARY KEY (Customer_id, Customer_personal_email),
-                          foreign key (Person_IC_Num) references PERSON(Person_IC_Num)
-);
-
-CREATE TABLE Delivery_Person (
-                                 DeliveryPerson_id INT,
-                                 DeliveryPerson_License VARCHAR2(30),
-                                 DeliveryPerson_number_plate VARCHAR(10),
-                                 Person_IC_Num VARCHAR2(20),
-                                 DeliveryPerson_address VARCHAR2(100),
-                                 DeliveryPerson_method VARCHAR2(100),
-                                 DeliveryPerson_status VARCHAR(20),
-                                 DeliveryPerson_estimatedTime TIMESTAMP,
-                                 DeliveryPerson_actualTime TIMESTAMP,
-                                 DeliveryPerson_fee DECIMAL(10,2),
-                                 DeliveryPerson_Company VARCHAR2(100) NOT NULL,
-                                 PRIMARY KEY (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate),
-                                 foreign key (Person_IC_Num) references PERSON(Person_IC_Num)
-);
-
-CREATE TABLE Employee (
-                          Employee_id INT,
-                          Person_IC_Num VARCHAR2(20),
-                          Employee_HireDate DATE,
-                          Employee_EdLevel VARCHAR2(100),
-                          PRIMARY KEY (Employee_id),
-                          foreign key (Person_IC_Num) references PERSON(Person_IC_Num)
-);
-
-CREATE TABLE Owner (
-                       Owner_id INT,
-                       Owner_tax_no VARCHAR2(50),
-                       Person_IC_Num VARCHAR(20),
-                       Employee_id INT,
-                       Owner_short_term_goal VARCHAR2(255),
-                       Owner_percentage_of_company DECIMAL(3,1),
-                       Owner_funds_deposited DECIMAL(10,2),
-                       Owner_total_investment DECIMAL(10,2),
-                       Owner_profit_ratio DECIMAL(3,1),
-                       Owner_authority_level VARCHAR2(20),
-                       Owner_management_style VARCHAR2(50),
-                       Owner_risk_tolerance VARCHAR2(20),
-                       PRIMARY KEY (Owner_id, Owner_tax_no),
-                       foreign key (Person_IC_Num) references PERSON(Person_IC_Num),
-                       foreign key (Employee_id) references EMPLOYEE (Employee_id)
-);
-
-CREATE TABLE Staff (
-                       Staff_id INT,
-                       Staff_work_email VARCHAR2(100),
-                       Employee_id INT,
-                       Person_IC_Num VARCHAR2(20),
-                       Staff_job_description VARCHAR2(255),
-                       Staff_stopwork_date DATE,
-                       Staff_penalties VARCHAR2(50),
-                       Staff_work_performance VARCHAR2(20),
-                       Staff_health_issues VARCHAR2(50),
-                       Staff_preferred_job_scope VARCHAR2(100),
-                       Staff_future_role VARCHAR2(100),
-                       Staff_position VARCHAR2(100),
-                       PRIMARY KEY (Staff_id, Staff_work_email),
-                       foreign key (Employee_id) references Employee(Employee_id),
-                       foreign key (Person_IC_Num) references Person(Person_IC_Num)
-);
-
-CREATE TABLE Storage (
-                         Storage_id INT,
-                         Storage_Barcode varchar2(100),
-                         Storage_acquisition_date DATE,
-                         PRIMARY KEY (Storage_id)
-);
-
-CREATE TABLE Franchise (
-                           Franchise_id INT,
-                           Franchise_code VARCHAR2(20),
-                           Franchise_contact_num VARCHAR2(100) NOT NULL,
-                           Franchise_address VARCHAR2(255),
-                           Franchise_postcode VARCHAR2(20),
-                           Franchise_state VARCHAR2(50),
-                           Franchise_region VARCHAR2(50),
-                           Franchise_location_type VARCHAR2(100),
-                           Franchise_operating_hour VARCHAR(20),
-                           Franchise_name VARCHAR2(100),
-                           PRIMARY KEY (Franchise_id, Franchise_code)
-);
-
-
-CREATE TABLE Reservation (
-                             Reservation_id INT,
-                             Reservation_code VARCHAR2(20),
-                             Customer_id INT,
-                             Customer_personal_email VARCHAR2(100),
-                             Franchise_id INT,
-                             Franchise_code VARCHAR2(20),
-                             Reservation_start_time TIMESTAMP,
-                             Reservation_end_time TIMESTAMP,
-                             Reservation_confirmed VARCHAR2(20),
-                             Reservation_expiration TIMESTAMP,
-                             Reservation_table_no INT,
-                             Reservation_capacity INT,
-                             Reservation_seating VARCHAR2(50),
-                             Reservation_requestDetails VARCHAR2(255),
-                             PRIMARY KEY (Reservation_id, Reservation_code),
-                             foreign key (Customer_id, Customer_personal_email) references Customer(Customer_id, Customer_personal_email),
-                             foreign key (Franchise_id, Franchise_code) references Franchise(Franchise_id, Franchise_code)
-);
-
-CREATE TABLE Orders (
-                        Order_id INT,
-                        Order_code VARCHAR2(20),
-                        Franchise_id INT,
-                        Franchise_code VARCHAR2(20),
-                        Reservation_id INT,
-                        Reservation_code VARCHAR2(20),
-                        Order_start_time VARCHAR2(10),
-                        Order_date DATE,
-                        Order_totalQuantityProduct INT,
-                        Order_end_time VARCHAR2(10),
-                        Order_add_on VARCHAR2(100),
-                        Order_remarks VARCHAR2(100),
-                        Order_table_number INT,
-                        Order_time_taken VARCHAR2(10),
-                        PRIMARY KEY (Order_id, Order_code),
-                        foreign key (Franchise_id, Franchise_code) references Franchise(Franchise_id, Franchise_code),
-                        foreign key (Reservation_id, Reservation_code) references Reservation(Reservation_id, Reservation_code)
-);
-
-CREATE TABLE Product (
-                         Product_id INT,
-                         Product_Availability VARCHAR2(20),
-                         Product_Price DECIMAL(6,2),
-                         PRIMARY KEY (Product_id)
-);
-
-CREATE TABLE Promotion (
-                           Promotion_id INT,
-                           Promotion_refNo VARCHAR2(20),
-                           Promotion_date_start DATE,
-                           Promotion_date_end DATE,
-                           Promotion_food_list VARCHAR2(255),
-                           Promotion_drink_list VARCHAR2(255),
-                           Promotion_discount VARCHAR2(100),
-                           Promotion_name VARCHAR2(100),
-                           Promotion_duration VARCHAR2(50),
-                           Promotion_reason VARCHAR2(100),
-                           PRIMARY KEY (Promotion_id, Promotion_refNo)
-);
-
-CREATE TABLE Supplier (
-                          Supplier_id INT,
-                          Supplier_ssm varchar2(50),
-                          Supplier_companyName varchar2(100),
-                          Supplier_contactName varchar2(50),
-                          Supplier_phoneNumber varchar(50),
-                          Supplier_address varchar2(100),
-                          Supplier_productType varchar2(50),
-                          Supplier_supplyFrequency varchar2(100),
-                          Supplier_paymentType varchar2(50),
-                          Supplier_email varchar2(100),
-                          PRIMARY KEY (Supplier_id, Supplier_ssm)
-);
-
-CREATE TABLE Asset (
-                       Asset_id INT,
-                       Asset_code VARCHAR2(50),
-                       Storage_id INT,
-                       Supplier_id INT,
-                       Supplier_ssm VARCHAR2(50),
-                       Asset_category varchar2(100),
-                       Asset_start_date DATE,
-                       Asset_dispose_date DATE,
-                       Asset_lifespan VARCHAR2(20),
-                       Asset_description VARCHAR2(100),
-                       Asset_picture VARCHAR2(100),
-                       Asset_last_maintenance_date DATE,
-                       Asset_next_maintenance_date DATE,
-                       PRIMARY KEY (Asset_id, Asset_code),
-                       foreign key (Storage_id) references STORAGE(Storage_id),
-                       foreign key (Supplier_id, Supplier_ssm) references SUPPLIER(Supplier_id, Supplier_ssm)
-);
-
-CREATE TABLE SupplierItem (
-                              SupplierItem_id INT,
-                              SupplierItem_code VARCHAR2(50),
-                              Supplier_id INT,
-                              Supplier_ssm VARCHAR2(50),
-                              SupplierItem_Name VARCHAR2(50),
-                              SupplierItem_category VARCHAR2(50),
-                              Qty_per_unit INT,
-                              SupplierItem_unit_price DECIMAL(8,2),
-                              Available_Stock DECIMAL(8,2),
-                              Expiration_date DATE,
-                              Last_ordered_date DATE,
-                              SupplierItem_quantity INT,
-                              PRIMARY KEY (SupplierItem_id, SupplierItem_code),
-                              foreign key (Supplier_id, Supplier_ssm) references Supplier(Supplier_id, Supplier_ssm)
-);
-
-CREATE TABLE Payslip (
-                         Payslip_id INT,
-                         Payslip_code VARCHAR(20),
-                         Payslip_scheduled_time VARCHAR2(10),
-                         Payslip_received_time VARCHAR2(10),
-                         Payslip_gross_salary DECIMAL(8,2),
-                         Payslip_deductions DECIMAL(8,2),
-                         Payslip_net_salary DECIMAL(8,2),
-                         Payslip_payment_date DATE,
-                         Payslip_account_number VARCHAR(50),
-                         Payslip_status VARCHAR(50),
-                         PRIMARY KEY (Payslip_id, Payslip_code)
-);
-
-CREATE TABLE Shift (
-                       Shift_id INT,
-                       Shift_code VARCHAR(20),
-                       Payslip_id INT,
-                       Payslip_code VARCHAR2(20),
-                       Franchise_id INT,
-                       Franchise_code VARCHAR2(20),
-                       Shift_start_time VARCHAR2(10),
-                       Shift_end_time VARCHAR2(10),
-                       Shift_role VARCHAR2(100),
-                       Shift_description VARCHAR2(255),
-                       Shift_pay_per_hour DECIMAL(8,2),
-                       Shift_start_date DATE,
-                       Shift_end_date DATE,
-                       Shift_duration_hours VARCHAR2(10),
-                       PRIMARY KEY (Shift_id, Shift_code),
-                       foreign key (Payslip_id, Payslip_code) references PAYSLIP(Payslip_id, Payslip_code),
-                       foreign key (Franchise_id, Franchise_code) references FRANCHISE(Franchise_id, Franchise_code)
-);
-
-CREATE TABLE Attendance (
-                            Attendance_id INT,
-                            Attendance_code VARCHAR(20),
-                            Payslip_id INT,
-                            Payslip_code VARCHAR2(20),
-                            Franchise_id INT,
-                            Franchise_code VARCHAR2(20),
-                            Attendance_date DATE,
-                            Attendance_checkInTime VARCHAR2(10),
-                            Attendance_checkOutTime VARCHAR2(10),
-                            Attendance_hours_worked NUMERIC(6,2),
-                            Attendance_status VARCHAR(50),
-                            Attendance_reason VARCHAR(255),
-                            Attendance_overtime_hours NUMERIC(6,2),
-                            Attendance_shiftType VARCHAR(50),
-                            PRIMARY KEY (Attendance_id, Attendance_code),
-                            foreign key (Payslip_id, Payslip_code) references PAYSLIP(Payslip_id, Payslip_code),
-                            foreign key (Franchise_id, Franchise_code) references FRANCHISE(Franchise_id, Franchise_code)
-);
-
-CREATE TABLE Leave (
-                       Leave_id INT,
-                       Leave_code VARCHAR2(20),
-                       Payslip_id INT,
-                       Payslip_code VARCHAR2(20),
-                       Franchise_id INT,
-                       Franchise_code VARCHAR2(20),
-                       Leave_start_time VARCHAR2(10),
-                       Leave_end_time VARCHAR2(10),
-                       Leave_duration_day VARCHAR2(50),
-                       Leave_reason VARCHAR2(255),
-                       Leave_left NUMERIC(8,2),
-                       Leave_end_date DATE,
-                       Leave_start_date DATE,
-                       Leave_duration_hours VARCHAR2(10),
-                       PRIMARY KEY (Leave_id, Leave_code),
-                       foreign key (Payslip_id, Payslip_code) references PAYSLIP(Payslip_id, Payslip_code),
-                       foreign key (Franchise_id, Franchise_code) references FRANCHISE(Franchise_id, Franchise_code)
-);
-
-CREATE TABLE Food (
-                      Food_id INT,
-                      Food_code VARCHAR2(20),
-                      Product_id INT,
-                      Food_picture VARCHAR2(50),
-                      Food_description VARCHAR(255),
-                      Food_cost DECIMAL(6,2),
-                      Food_servingSize VARCHAR2(50),
-                      Food_availabilityStatus VARCHAR2(50),
-                      Food_availabilityStock VARCHAR2(50),
-                      Food_category VARCHAR2(100),
-                      Food_cookingMethod VARCHAR(100),
-                      PRIMARY KEY (Food_id, Food_code),
-                      foreign key (Product_id) references PRODUCT(Product_id)
-);
-
-CREATE TABLE Drink (
-                       Drink_id INT,
-                       Drink_code VARCHAR(20),
-                       Product_id INT,
-                       Drink_picture VARCHAR2(50),
-                       Drink_cost DECIMAL(6,2),
-                       Drink_availabilityStock VARCHAR2(50),
-                       Drink_category VARCHAR2(100),
-                       Drink_temperature VARCHAR2(50),
-                       Drink_carbonationStatus VARCHAR2(50),
-                       Drink_availabilityStatus VARCHAR2(50),
-                       Drink_size VARCHAR2(50),
-                       PRIMARY KEY (Drink_id, Drink_code),
-                       foreign key (Product_id) references PRODUCT(Product_id)
-);
-
-CREATE TABLE Asset_Log (
-                           AssetLog_id INT,
-                           AssetLog_code VARCHAR2(20),
-                           Asset_id INT,
-                           Asset_code VARCHAR2(20),
-                           AssetLog_usage_start_time VARCHAR2(10),
-                           AssetLog_usage_end_time VARCHAR2(20),
-                           AssetLog_usage_date DATE,
-                           AssetLog_usage_duration VARCHAR2(10), -- Changed from DATETIME to TIMESTAMP for Oracle compatibility
-                           AssetLog_description VARCHAR2(255),
-                           AssetLog_remarks VARCHAR2(255),
-                           AssetLog_condition VARCHAR2(50),
-                           AssetLog_location_used VARCHAR2(100),
-                           PRIMARY KEY (AssetLog_id, AssetLog_code),
-                           foreign key (Asset_id, Asset_code) references Asset(Asset_id, Asset_code)
-);
-
-CREATE TABLE Feedback (
-                          Feedback_id INT,
-                          Feedback_Code VARCHAR2(20),
-                          Feedback_type VARCHAR2(50),
-                          Feedback_timeReceived VARCHAR2(10),
-                          Feedback_dateReceived DATE,
-                          Feedback_comments VARCHAR2(255),
-                          Feedback_response_desc VARCHAR2(255),
-                          Feedback_responseStatus VARCHAR2(50),
-                          Feedback_foodRating NUMBER(2,1),  -- Allows decimal ratings (e.g., 4.5)
-                          Feedback_serviceRating NUMBER(2,1),  -- Allows decimal ratings (e.g., 4.0)
-                          PRIMARY KEY (Feedback_id, Feedback_Code)
-);
-
-CREATE TABLE Inventory (
-                           Inventory_id INT,
-                           Inventory_code VARCHAR2(20),
-                           Storage_id INT,
-                           Inventory_quantity_in_stock INT,
-                           Inventory_unit_of_measure VARCHAR2(50),
-                           Inventory_location VARCHAR2(100),
-                           Inventory_min_stock_level INT,
-                           Inventory_max_stock_level INT,
-                           Inventory_last_updated TIMESTAMP,  -- Changed from DATETIME to TIMESTAMP for Oracle compatibility
-                           Inventory_stock_status VARCHAR2(50),
-                           Inventory_name VARCHAR2(100),
-                           PRIMARY KEY (Inventory_id, Inventory_code),
-                           foreign key (Storage_id) references Storage(Storage_id)
-);
-
-CREATE TABLE Payment (
-                         Payment_id INT,
-                         Payment_transactionRef VARCHAR2(20),
-                         Order_id INT,
-                         Order_code VARCHAR2(20),
-                         Supplier_id INT,
-                         Supplier_ssm VARCHAR2(50),
-                         Franchise_id INT,
-                         Franchise_code VARCHAR2(20),
-                         Payment_refund_status VARCHAR2(50),
-                         Payment_date DATE,
-                         Payment_method VARCHAR2(50),
-                         Payment_total_amount DECIMAL(8,2),
-                         Payment_tax DECIMAL(8,2),
-                         Payment_status VARCHAR2(50),
-                         Payment_discount_promotion DECIMAL(8,2),
-                         Payment_refund_amount DECIMAL(8,2),
-                         PRIMARY KEY (Payment_id, Payment_transactionRef),
-                         foreign key (Order_id, Order_code) references ORDERS(Order_id, Order_code),
-                         foreign key (Supplier_id, Supplier_ssm) references SUPPLIER(Supplier_id, Supplier_ssm),
-                         foreign key (Franchise_id, Franchise_code) references FRANCHISE(Franchise_id, Franchise_code)
-);
-
-
 --INSERT DATA:
 
 --FIRST PART INSERT DATA INTO SUPERCLASS:
@@ -440,6 +45,8 @@ INTO Person (Person_IC_Num, Person_name, Person_age) VALUES ('620930099876', 'Ab
 INTO Person (Person_IC_Num, Person_name, Person_age) VALUES ('589175692516', 'Abu Bakar', 24)
 INTO Person (Person_IC_Num, Person_name, Person_age) VALUES ('107692769173', 'Zack', 27)
 SELECT 1 FROM DUAL; --compulsory for inserting multiple data into one table when using 1 query
+
+commit;
 
 INSERT ALL --inserting data into customer table
     INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
@@ -514,11 +121,7 @@ VALUES (20010, 'Zack@example.com', '107692769173', 6,
         19.90, 'Takeaway', '01:15:00', 'Solo Meal','889900112')
 SELECT 1 FROM DUAL;
 
-
---command to check if FK is working as intended || have 10 data in CUSTOMER table, when execute this command, it has to have 10 data as well.
-SELECT p.Person_name, p.Person_IC_Num, c.Customer_id, c.Person_IC_Num, c.Customer_dining_purpose
-from Person p
-         join Customer c on c.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL --DATA INJECTION FOR DELIVERY_PERSON
     INTO Delivery_Person(DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate,
@@ -593,10 +196,7 @@ VALUES (30010, 'BCD987456', 'WX7890', '700112087654',
         TO_TIMESTAMP('2025-02-24 12:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2025-02-24 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 9.50, 'FoodPanda')
 SELECT 1 FROM DUAL;
 
---command to check if FK is working as intended || have 10 data in Delivery_Person table, when execute this command, it has to have 10 data as well.
-SELECT p.Person_name, p.Person_IC_Num, dp.Person_IC_Num
-from Person p
-         join Delivery_Person dp on dp.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL --DATA INJECTION FOR EMPLOYEE
     INTO Employee (Employee_id, Person_IC_Num, Employee_HireDate, Employee_EdLevel)
@@ -641,10 +241,7 @@ INTO Employee (Employee_id, Person_IC_Num, Employee_HireDate, Employee_EdLevel)
 VALUES (40020, '800112068901', TO_DATE('2024-07-22', 'YYYY-MM-DD'), 'Diploma in Retail Management')
 SELECT 1 FROM DUAL;
 
---command to check if FK and PK is working
-SELECT p.Person_name, p.Person_IC_Num, emp.Person_IC_Num, emp.Employee_id
-from Person p
-         join Employee emp on emp.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL --DATA INJECTION FOR STAFF
     INTO Staff
@@ -689,10 +286,7 @@ VALUES (60010, 'hafiz.iqbal@blackcaravan.com', 40010, '900102033456',
         'None', 'Sanitation', 'Cleaning Supervisor', 'Cleaner')
 SELECT 1 FROM DUAL;
 
---command to check if FK and PK is working
-SELECT p.Person_name, p.Person_IC_Num, s.Person_IC_Num, s.Employee_id, s.Staff_work_email, s.Staff_id
-from Person p
-         join Staff s on s.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL
     INTO Owner (Owner_id, Owner_tax_no, Person_IC_Num,
@@ -757,9 +351,7 @@ VALUES (50010, 'TX87654321', '800112068901', 40020, 'Optimize workforce',
         33.0, 70000.00, 210000.00, 17.0, 'High', 'Coaching', 'Moderate')
 SELECT 1 FROM DUAL;
 
-SELECT p.Person_name, p.Person_IC_Num, p.Person_age, o.Person_IC_Num, o.Employee_id, o.Owner_tax_no, o.Owner_id
-from Person p
-         join Owner o on o.Person_IC_Num = p.Person_IC_Num;
+commit;
 
 INSERT ALL
     INTO Product (Product_id, Product_Availability, Product_Price) VALUES (110001, 'Available', 12.50)
@@ -783,6 +375,8 @@ INTO Product (Product_id, Product_Availability, Product_Price) VALUES (110018, '
 INTO Product (Product_id, Product_Availability, Product_Price) VALUES (110019, 'Available', 20.00)
 INTO Product (Product_id, Product_Availability, Product_Price) VALUES (110020, 'Unavailable', 8.00)
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL
     INTO Food (Food_id, Food_code, Product_id, Food_picture, Food_description,
@@ -846,11 +440,7 @@ VALUES(120010, 'F010', 110010, 'img010.jpg',
        '60', 'Poultry', 'Fried')
 SELECT 1 FROM DUAL;
 
---test code
-SELECT prd.Product_id, f.Food_id, f.Food_code, f.Product_id
-from Product prd
-         join Food f on f.Product_id = prd.Product_id;
-
+commit;
 
 INSERT ALL
     INTO Drink (Drink_id, Drink_code, Product_id, Drink_picture, Drink_cost,
@@ -905,53 +495,52 @@ VALUES (130010, 'D010', 110020, 'Dimg001.jpg', 3.70, '30',
         'Coffee', 'Hot', 'Non-Carbonated', 'Available', '250ml')
 SELECT 1 FROM DUAL;
 
---test code
-SELECT prd.Product_id, d.Drink_id, d.Drink_code, d.Product_id
-from Product prd
-         join Drink d on d.Product_id = prd.Product_id;
+commit;
 
 INSERT ALL --DATA INJECTION FOR STORAGE
     INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240001, 'STO-20250001', TO_DATE('2025-01-10', 'YYYY-MM-DD'))
+VALUES (250001, 'STO-20250001', TO_DATE('2025-01-10', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240002, 'STO-20250002', TO_DATE('2025-01-15', 'YYYY-MM-DD'))
+VALUES (250002, 'STO-20250002', TO_DATE('2025-01-15', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240003, 'STO-20250003', TO_DATE('2024-03-05', 'YYYY-MM-DD'))
+VALUES (250003, 'STO-20250003', TO_DATE('2024-03-05', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240004, 'STO-20250004', TO_DATE('2024-03-25', 'YYYY-MM-DD'))
+VALUES (250004, 'STO-20250004', TO_DATE('2024-03-25', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240005, 'STO-20250005', TO_DATE('2024-04-12', 'YYYY-MM-DD'))
+VALUES (250005, 'STO-20250005', TO_DATE('2024-04-12', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240006, 'STO-20250006', TO_DATE('2024-05-08', 'YYYY-MM-DD'))
+VALUES (250006, 'STO-20250006', TO_DATE('2024-05-08', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240007, 'STO-20250007', TO_DATE('2024-06-20', 'YYYY-MM-DD'))
+VALUES (250007, 'STO-20250007', TO_DATE('2024-06-20', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240008, 'STO-20250008', TO_DATE('2024-07-14', 'YYYY-MM-DD'))
+VALUES (250008, 'STO-20250008', TO_DATE('2024-07-14', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240009, 'STO-20250009', TO_DATE('2024-08-30', 'YYYY-MM-DD'))
+VALUES (250009, 'STO-20250009', TO_DATE('2024-08-30', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240010, 'STO-20250010', TO_DATE('2024-09-05', 'YYYY-MM-DD'))
+VALUES (250010, 'STO-20250010', TO_DATE('2024-09-05', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240011, 'STO-20250011', TO_DATE('2023-10-18', 'YYYY-MM-DD'))
+VALUES (250011, 'STO-20250011', TO_DATE('2023-10-18', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240012, 'STO-20250012', TO_DATE('2023-11-02', 'YYYY-MM-DD'))
+VALUES (250012, 'STO-20250012', TO_DATE('2023-11-02', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240013, 'STO-20250013', TO_DATE('2023-12-25', 'YYYY-MM-DD'))
+VALUES (250013, 'STO-20250013', TO_DATE('2023-12-25', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240014, 'STO-20250014', TO_DATE('2023-09-09', 'YYYY-MM-DD'))
+VALUES (250014, 'STO-20250014', TO_DATE('2023-09-09', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240015, 'STO-20250015', TO_DATE('2023-08-14', 'YYYY-MM-DD'))
+VALUES (250015, 'STO-20250015', TO_DATE('2023-08-14', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240016, 'STO-20250016', TO_DATE('2022-07-22', 'YYYY-MM-DD'))
+VALUES (250016, 'STO-20250016', TO_DATE('2022-07-22', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240017, 'STO-20250017', TO_DATE('2022-06-05', 'YYYY-MM-DD'))
+VALUES (250017, 'STO-20250017', TO_DATE('2022-06-05', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240018, 'STO-20250018', TO_DATE('2021-05-10', 'YYYY-MM-DD'))
+VALUES (250018, 'STO-20250018', TO_DATE('2021-05-10', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240019, 'STO-20250019', TO_DATE('2021-04-15', 'YYYY-MM-DD'))
+VALUES (250019, 'STO-20250019', TO_DATE('2021-04-15', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240020, 'STO-20250020', TO_DATE('2020-03-12', 'YYYY-MM-DD'))
+VALUES (250020, 'STO-20250020', TO_DATE('2020-03-12', 'YYYY-MM-DD'))
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL --DATA INJECTION FOR SUPPLIER
     INTO Supplier (Supplier_id, Supplier_ssm, Supplier_companyName,
@@ -1016,67 +605,69 @@ VALUES (190010, '274910495736 (KT7105938-D)', 'FrozenDelights',
         '303 Frost St, City', 'Frozen Goods', 'Monthly', 'Credit Card', 'michelle@frozendelights.com')
 SELECT 1 FROM DUAL;
 
+commit;
+
 INSERT ALL --DATA INJECTION FOR INVENTORY
     INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                     Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level, Inventory_max_stock_level,
                     Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210001, 'INV1001', 240001,
+VALUES (210001, 'INV1001', 250001,
         50, 'pcs', 'A1',
         10, 200, TO_TIMESTAMP('2025-02-15 09:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Apple')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210002, 'INV1002', 240002,
+VALUES (210002, 'INV1002', 250002,
         120, 'kg', 'B2',
         30, 500, TO_TIMESTAMP('2025-02-16 14:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Flour')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210003, 'INV1003', 240003,
+VALUES (210003, 'INV1003', 250003,
         75, 'liters', 'C3',
         20, 150, TO_TIMESTAMP('2025-02-17 16:45:00', 'YYYY-MM-DD HH24:MI:SS'),
         'Low Stock', 'Milk')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210004, 'INV1004', 240004,
+VALUES (210004, 'INV1004', 250004,
         30, 'pcs', 'A1',
         5, 100, TO_TIMESTAMP('2025-02-18 11:20:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Pen')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210005, 'INV1005', 240005,
+VALUES (210005, 'INV1005', 250005,
         200, 'kg', 'B3',
         50, 500, TO_TIMESTAMP('2025-02-18 13:10:00', 'YYYY-MM-DD HH24:MI:SS'),
         'Out of Stock', 'Sugar')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210006, 'INV1006', 240006,
+VALUES (210006, 'INV1006', 250006,
         150, 'pcs', 'A2',
         10, 300, TO_TIMESTAMP('2025-02-14 08:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Pencil')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210007, 'INV1007', 240007,
+VALUES (210007, 'INV1007', 250007,
         60, 'liters', 'C1',
         20, 180, TO_TIMESTAMP('2025-02-13 10:25:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Juice')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210008, 'INV1008', 240008,
+VALUES (210008, 'INV1008', 250008,
         70, 'pcs', 'B1',
         25, 250, TO_TIMESTAMP('2025-02-12 12:50:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Notepad')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210009, 'INV1009', 240009,
+VALUES (210009, 'INV1009', 250009,
         80, 'kg', 'A4',
         15, 100, TO_TIMESTAMP('2025-02-11 14:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         'Low Stock', 'Rice')
@@ -1084,95 +675,88 @@ INTO Inventory (Inventory_id, Inventory_code, Storage_id,
                 Inventory_quantity_in_stock, Inventory_unit_of_measure, Inventory_location,
                 Inventory_min_stock_level, Inventory_max_stock_level, Inventory_last_updated,
                 Inventory_stock_status, Inventory_name)
-VALUES (210010, 'INV1010', 240010,
+VALUES (210010, 'INV1010', 250010,
         30, 'liters', 'C2',
         10, 200, TO_TIMESTAMP('2025-02-10 09:15:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Oil')
 SELECT 1 FROM DUAL;
 
---test code
-SELECT s.Storage_id, a.Storage_id
-from Storage s
-         join Inventory a on a.Storage_id = s.Storage_id;
-
+commit;
 
 INSERT ALL --DATA INJECTION FOR ASSET
     INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
                 Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
                 Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220001, 'AST2001', 240011, 190001, '202403068790 (KT0565577-D)', 'Electronics',
+VALUES (220001, 'AST2001', 250011, 190001, '202403068790 (KT0565577-D)', 'Electronics',
         TO_DATE('2023-05-01', 'YYYY-MM-DD'), TO_DATE('2025-07-17', 'YYYY-MM-DD'), '5 years',
         'Laptop, 15-inch screen', 'ASTimg01.jpg',
         TO_DATE('2025-01-20', 'YYYY-MM-DD'), TO_DATE('2025-07-20', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220002, 'AST2002', 240012, 190002, '675409873476 (KT8764487-D)', 'Furniture',
+VALUES (220002, 'AST2002', 250012, 190002, '675409873476 (KT8764487-D)', 'Furniture',
         TO_DATE('2022-09-15', 'YYYY-MM-DD'), TO_DATE('2025-07-18', 'YYYY-MM-DD'), '10 years',
         'Office desk, oak wood', 'ASTimg01.jpg',
         TO_DATE('2025-02-05', 'YYYY-MM-DD'), TO_DATE('2026-02-05', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220003, 'AST2003', 240013, 190003, '124376894567 (KT2398639-D)', 'Appliances',
+VALUES (220003, 'AST2003', 250013, 190003, '124376894567 (KT2398639-D)', 'Appliances',
         TO_DATE('2020-03-10', 'YYYY-MM-DD'), TO_DATE('2025-07-19', 'YYYY-MM-DD'), '7 years',
         'Refrigerator, 350L', 'ASTimg01.jpg',
         TO_DATE('2024-11-10', 'YYYY-MM-DD'), TO_DATE('2025-11-10', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220004, 'AST2004', 240014, 190004, '091287410384 (KT8194627-D)', 'Electronics',
+VALUES (220004, 'AST2004', 250014, 190004, '091287410384 (KT8194627-D)', 'Electronics',
         TO_DATE('2021-07-20', 'YYYY-MM-DD'), TO_DATE('2025-07-20', 'YYYY-MM-DD'), '4 years',
         'Smart TV, 55-inch', 'ASTimg01.jpg',
         TO_DATE('2024-08-15', 'YYYY-MM-DD'), TO_DATE('2025-08-15', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220005, 'AST2005', 240015, 190005, '273916503846 (KT8104528-D)', 'Furniture',
+VALUES (220005, 'AST2005', 250015, 190005, '273916503846 (KT8104528-D)', 'Furniture',
         TO_DATE('2020-11-01', 'YYYY-MM-DD'), TO_DATE('2025-07-21', 'YYYY-MM-DD'), '12 years',
         'Office chair, ergonomic', 'ASTimg01.jpg',
         TO_DATE('2024-09-01', 'YYYY-MM-DD'), TO_DATE('2025-09-01', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220006, 'AST2006', 240016, 190006, '189745781423 (KT3409745-D)', 'Electronics',
+VALUES (220006, 'AST2006', 250016, 190006, '189745781423 (KT3409745-D)', 'Electronics',
         TO_DATE('2023-01-10', 'YYYY-MM-DD'), TO_DATE('2025-07-22', 'YYYY-MM-DD'), '6 years',
         'Desktop computer, i7', 'ASTimg01.jpg',
         TO_DATE('2025-02-10', 'YYYY-MM-DD'), TO_DATE('2025-08-10', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220007, 'AST2007', 240017, 190007, '202034569846 (KT2780590-D)', 'Appliances',
+VALUES (220007, 'AST2007', 250017, 190007, '202034569846 (KT2780590-D)', 'Appliances',
         TO_DATE('2022-05-05', 'YYYY-MM-DD'), TO_DATE('2025-07-23', 'YYYY-MM-DD'), '8 years',
         'Microwave, 20L', 'ASTimg01.jpg',
         TO_DATE('2024-12-01', 'YYYY-MM-DD'), TO_DATE('2025-12-01', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220008, 'AST2008', 240018, 190008, '871263204928 (KT7184017-D)', 'Furniture',
+VALUES (220008, 'AST2008', 250018, 190008, '871263204928 (KT7184017-D)', 'Furniture',
         TO_DATE('2023-08-01', 'YYYY-MM-DD'), TO_DATE('2025-07-24', 'YYYY-MM-DD'), '10 years',
         'Filing cabinet, steel', 'ASTimg01.jpg',
         TO_DATE('2025-02-10', 'YYYY-MM-DD'), TO_DATE('2026-02-10', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220009, 'AST2009', 240019, 190009, '248729475629 (KT7193846-D)', 'Electronics',
+VALUES (220009, 'AST2009', 250019, 190009, '248729475629 (KT7193846-D)', 'Electronics',
         TO_DATE('2021-12-20', 'YYYY-MM-DD'), TO_DATE('2025-07-25', 'YYYY-MM-DD'), '5 years',
         'Air conditioner, 1.5HP', 'ASTimg01.jpg',
         TO_DATE('2024-07-15', 'YYYY-MM-DD'), TO_DATE('2025-07-15', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220010, 'AST2010', 240020, 190010, '274910495736 (KT7105938-D)', 'Appliances',
+VALUES (220010, 'AST2010', 250020, 190010, '274910495736 (KT7105938-D)', 'Appliances',
         TO_DATE('2020-06-15', 'YYYY-MM-DD'), TO_DATE('2025-07-26', 'YYYY-MM-DD'), '7 years',
         'Washing machine, 10kg', 'ASTimg01.jpg',
         TO_DATE('2024-10-01', 'YYYY-MM-DD'), TO_DATE('2025-10-01', 'YYYY-MM-DD'))
 SELECT 1 FROM DUAL;
 
---test code
-SELECT s.Supplier_id, a.Supplier_id
-from Supplier s
-         join Asset a on a.Supplier_id = s.Supplier_id;
+commit;
 
 INSERT ALL --DATA INJECTION FOR SUPPLIERITEM
     INTO SupplierItem (SupplierItem_id, SupplierItem_code, Supplier_id, Supplier_ssm,
@@ -1237,10 +821,7 @@ VALUES (200010, 'SI010', 190010, '274910495736 (KT7105938-D)', 'Canned Tuna', 'S
         16, 4.9, 90.00, TO_DATE('2026-06-30', 'YYYY-MM-DD'), TO_DATE('2025-02-07', 'YYYY-MM-DD'), 50)
 SELECT 1 FROM DUAL;
 
---test code
-SELECT s.Supplier_id, a.Supplier_id
-from Supplier s
-         join SupplierItem a on a.Supplier_id = s.Supplier_id;
+commit;
 
 INSERT ALL --DATA INJECTION FOR FRANCHISE
     INTO Franchise (Franchise_id, Franchise_code, Franchise_contact_num,
@@ -1305,7 +886,7 @@ VALUES (240010, 'FRCH-010', '03-5544 6677',
         'Central', 'Food Truck', '20:00:00', 'BBQ Heaven')
 SELECT 1 FROM DUAL;
 
-Commit;
+commit;
 
 INSERT ALL
     INTO Reservation (Reservation_id, Reservation_code, Customer_id,
@@ -1400,10 +981,7 @@ VALUES (140010, 'R010', 20010,
         TO_TIMESTAMP('2025-02-22 20:30:00', 'YYYY-MM-DD HH24:MI:SS'), 14, 4, 'Outdoor seating', 'Casual dinner')
 SELECT 1 FROM DUAL;
 
---test code
-SELECT r.Customer_id, c.Customer_id, c.Person_IC_Num
-from Reservation r
-join Customer c on r.Customer_id = c.Customer_id;
+commit;
 
 INSERT ALL --DATA INJECTION FOR FEEDBACK
     INTO Feedback (Feedback_id, Feedback_Code, Feedback_type,
@@ -1467,6 +1045,8 @@ VALUES (160010, 'FB010', 'Expensive Pricing',
         '19:20:00', TO_DATE('2025-02-12', 'YYYY-MM-DD'), 'The prices are too high for portions.',
         'No immediate action taken', 'Pending', 3.0, 3.0)
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL --DATA INJECTION FOR PROMOTION
     INTO Promotion (Promotion_id, Promotion_refNo, Promotion_date_start,
@@ -1608,15 +1188,6 @@ SELECT 1 FROM DUAL;
 
 commit;
 
---test code
-SELECT o.Franchise_id, f.Franchise_id
-from Franchise f
-         join Orders o ON o.Franchise_id = f.Franchise_id;
-
-SELECT o.Franchise_id, r.Franchise_id
-from Reservation r
-         join Orders o ON o.Franchise_id = r.Franchise_id;
-
 INSERT ALL
     INTO Payment (Payment_id, Payment_transactionRef, Payment_refund_status,
                   Payment_date, Payment_method, Payment_total_amount, Payment_tax, Payment_status,
@@ -1691,6 +1262,8 @@ VALUES (170012, 'TXN012', 'Not Refunded', TO_DATE('2025-02-17', 'YYYY-MM-DD'),
         'Bank Transfer', 3800, 150, 'Completed', 25.00,
         0.0, 180012, 'O012', 190010, '274910495736 (KT7105938-D)', 240002, 'FRCH-002')
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL
     INTO Payslip (Payslip_id, Payslip_code, Payslip_scheduled_time, Payslip_received_time,
@@ -1821,6 +1394,8 @@ VALUES (90010, 'A010', TO_DATE('2025-03-19', 'YYYY-MM-DD'), '8:30:00', '17:30:00
         '-', 1, 'Evening Shift', 240010, 'FRCH-010', 100010, 'P010')
 SELECT 1 FROM DUAL;
 
+commit;
+
 INSERT ALL
     INTO Leave (Leave_id, Leave_code, Leave_start_time, Leave_end_time, Leave_duration_day,
                 Leave_reason, Leave_left, Leave_end_date, Leave_start_date, Leave_duration_hours,
@@ -1873,6 +1448,8 @@ INTO Leave (Leave_id, Leave_code, Leave_start_time, Leave_end_time, Leave_durati
 VALUES (80010, 'L010', '0:00:00', '0:00:00', '31', 'Maternity Leave', 60, TO_DATE('2025-09-01', 'YYYY-MM-DD'),
         TO_DATE('2025-10-31', 'YYYY-MM-DD'), '248', 240010, 'FRCH-010', 100010, 'P010')
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL
     INTO Shift (Shift_id, Shift_code, Shift_start_time, Shift_end_time, Shift_role,
@@ -1936,6 +1513,8 @@ VALUES (70010, 'FLEX010', '10:00:00', '18:00:00', 'Cashier', 'Handling payments'
         TO_DATE('2025-02-01', 'YYYY-MM-DD'), TO_DATE('2025-06-30', 'YYYY-MM-DD'),
         '8:00:00', 240010, 'FRCH-010', 100010, 'P010')
 SELECT 1 FROM DUAL;
+
+commit;
 
 INSERT ALL
     INTO Asset_Log (AssetLog_id, AssetLog_code, AssetLog_usage_start_time, AssetLog_usage_end_time,
@@ -2008,6 +1587,727 @@ INTO Asset_Log (AssetLog_id, AssetLog_code, AssetLog_usage_start_time, AssetLog_
 VALUES (230010, 'AL1010', '8:30:00', '10:00:00', TO_DATE('2025-02-19', 'YYYY-MM-DD'),
         '1.5 hours', 'Used camera for product demo', 'Camera functioning well', 'Good',
         'Office 4', 220010, 'AST2010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+--INSERT EXPLOSION TABLE
+
+INSERT ALL --Franchise_Promotion
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240001, 'FRCH-001', 150001, 'PRO001')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240002, 'FRCH-002', 150002, 'PRO002')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240003, 'FRCH-003', 150003, 'PRO003')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240004, 'FRCH-004', 150004, 'PRO004')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240005, 'FRCH-005', 150005, 'PRO005')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240006, 'FRCH-006', 150006, 'PRO006')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240007, 'FRCH-007', 150007, 'PRO007')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240008, 'FRCH-008', 150008, 'PRO008')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240009, 'FRCH-009', 150009, 'PRO009')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (240010, 'FRCH-010', 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Customer_DeliveryPerson
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20001, 'Ahmad.Haziq@example.com', 30001, 'ABC123456', 'WX1234')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20002, 'Nor.Azman@example.com', 30002, 'XYZ987654', 'UV5678')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20003, 'Zainab.Kassim@example.com', 30003, 'LMN456789', 'GH9012')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20004, 'Hassan.Ramzi@example.com', 30004, 'PQR321654', 'JK3456')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20005, 'Fatimah.Ariff@example.com', 30005, 'DEF654321', 'MN7890')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20006, 'Mohamed.Salleh@example.com', 30006, 'GHI789123', 'OP2345')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20007, 'Rohani.Ismail@example.com', 30007, 'STU987321', 'QR6789')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20008, 'Abdul.Rahim@example.com', 30008, 'VWX654987', 'ST8901')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20009, 'Abu.Bakar@example.com', 30009, 'YZA321654', 'UV3456')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20010, 'Zack@example.com', 30010, 'BCD987456', 'WX7890')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Customer_Promotion
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20001, 'Ahmad.Haziq@example.com', 150001, 'PRO001')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20002, 'Nor.Azman@example.com', 150002, 'PRO002')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20003, 'Zainab.Kassim@example.com', 150003, 'PRO003')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20004, 'Hassan.Ramzi@example.com', 150004, 'PRO004')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20005, 'Fatimah.Ariff@example.com', 150005, 'PRO005')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20006, 'Mohamed.Salleh@example.com', 150006, 'PRO006')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20007, 'Rohani.Ismail@example.com', 150007, 'PRO007')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20008, 'Abdul.Rahim@example.com', 150008, 'PRO008')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20009, 'Abu.Bakar@example.com', 150009, 'PRO009')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20010, 'Zack@example.com', 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --DeliveryPerson_Staff
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30001, 'ABC123456', 'WX1234', 60001, 'ahmad.zulkarnain@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30002, 'XYZ987654', 'UV5678', 60002, 'siti.nurhaliza@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30003, 'LMN456789', 'GH9012', 60003, 'lee.chong.wei@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30004, 'PQR321654', 'JK3456', 60004, 'nur.aisyah.binti.rahman@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30005, 'DEF654321', 'MN7890', 60005, 'muhammad.farhan@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30006, 'GHI789123', 'OP2345', 60006, 'lim.wei.sheng@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30007, 'STU987321', 'QR6789', 60007, 'kavitha.rajendran@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30008, 'VWX654987', 'ST8901', 60008, 'ariff.hakim@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30009, 'YZA321654', 'UV3456', 60009, 'wong.mei.ling@blackcaravan.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30010, 'BCD987456', 'WX7890', 60010, 'hafiz.iqbal@blackcaravan.com')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Staff_Reservation
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60001, 'ahmad.zulkarnain@blackcaravan.com', 140001, 'R001')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60002, 'siti.nurhaliza@blackcaravan.com', 140002, 'R002')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60003, 'lee.chong.wei@blackcaravan.com', 140003, 'R003')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60004, 'nur.aisyah.binti.rahman@blackcaravan.com', 140004, 'R004')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60005, 'muhammad.farhan@blackcaravan.com', 140005, 'R005')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60006, 'lim.wei.sheng@blackcaravan.com', 140006, 'R006')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60007, 'kavitha.rajendran@blackcaravan.com', 140007, 'R007')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60008, 'ariff.hakim@blackcaravan.com', 140008, 'R008')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60009, 'wong.mei.ling@blackcaravan.com', 140009, 'R009')
+INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60010, 'hafiz.iqbal@blackcaravan.com', 140010, 'R010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Person_Asset
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (990101101234, 220001, 'AST2001')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (980214025678, 220002, 'AST2002')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (970325059876, 220003, 'AST2003')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (960430086543, 220004, 'AST2004')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (950512093210, 220005, 'AST2005')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (940623014321, 220006, 'AST2006')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (930704078765, 220007, 'AST2007')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (920815125674, 220008, 'AST2008')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (910926119098, 220009, 'AST2009')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (900102033456, 220010, 'AST2010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Person_Product
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (990101101234, 110001)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (980214025678, 110002)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (970325059876, 110003)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (960430086543, 110004)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (950512093210, 110005)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (940623014321, 110006)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (930704078765, 110007)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (920815125674, 110008)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (910926119098, 110009)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (900102033456, 110010)
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Person_Payment
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (990101101234, 170001, 'TXN001')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (980214025678, 170002, 'TXN002')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (970325059876, 170003, 'TXN003')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (960430086543, 170004, 'TXN004')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (950512093210, 170005, 'TXN005')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (940623014321, 170006, 'TXN006')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (930704078765, 170007, 'TXN007')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (920815125674, 170008, 'TXN008')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (910926119098, 170009, 'TXN009')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (900102033456, 170010, 'TXN010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Person_Feedback
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (990101101234, 160001, 'FB001')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (980214025678, 160002, 'FB002')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (970325059876, 160003, 'FB003')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (960430086543, 160004, 'FB004')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (950512093210, 160005, 'FB005')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (940623014321, 160006, 'FB006')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (930704078765, 160007, 'FB007')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (920815125674, 160008, 'FB008')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (910926119098, 160009, 'FB009')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (900102033456, 160010, 'FB010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Person_Order
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (990101101234, 180001, 'O001')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (980214025678, 180002, 'O002')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (970325059876, 180003, 'O003')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (960430086543, 180004, 'O004')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (950512093210, 180005, 'O005')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (940623014321, 180006, 'O006')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (930704078765, 180007, 'O007')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (920815125674, 180008, 'O008')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (910926119098, 180009, 'O009')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (900102033456, 180010, 'O010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Person_Franchise
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (990101101234, 240001, 'FRCH-001')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (980214025678, 240002, 'FRCH-002')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (970325059876, 240003, 'FRCH-003')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (960430086543, 240004, 'FRCH-004')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (950512093210, 240005, 'FRCH-005')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (940623014321, 240006, 'FRCH-006')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (930704078765, 240007, 'FRCH-007')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (920815125674, 240008, 'FRCH-008')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (910926119098, 240009, 'FRCH-009')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (900102033456, 240010, 'FRCH-010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_Supplier
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40001, 190001, '202403068790 (KT0565577-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40002, 190002, '675409873476 (KT8764487-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40003, 190003, '124376894567 (KT2398639-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40004, 190004, '091287410384 (KT8194627-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40005, 190005, '273916503846 (KT8104528-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40006, 190006, '189745781423 (KT3409745-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40007, 190007, '202034569846 (KT2780590-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40008, 190008, '871263204928 (KT7184017-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40009, 190009, '248729475629 (KT7193846-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40010, 190010, '274910495736 (KT7105938-D)')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_Customer
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40001, 20001, 'Ahmad.Haziq@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40002, 20002, 'Nor.Azman@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40003, 20003, 'Zainab.Kassim@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40004, 20004, 'Hassan.Ramzi@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40005, 20005, 'Fatimah.Ariff@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40006, 20006, 'Mohamed.Salleh@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40007, 20007, 'Rohani.Ismail@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40008, 20008, 'Abdul.Rahim@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40009, 20009, 'Abu.Bakar@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40010, 20010, 'Zack@example.com')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_AssetLog
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40001, 230001, 'AL1001')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40002, 230002, 'AL1002')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40003, 230003, 'AL1003')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40004, 230004, 'AL1004')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40005, 230005, 'AL1005')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40006, 230006, 'AL1006')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40007, 230007, 'AL1007')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40008, 230008, 'AL1008')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40009, 230009, 'AL1009')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40010, 230010, 'AL1010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_Attendance
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40001, 90001, 'A001')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40002, 90002, 'A002')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40003, 90003, 'A003')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40004, 90004, 'A004')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40005, 90005, 'A005')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40006, 90006, 'A006')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40007, 90007, 'A007')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40008, 90008, 'A008')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40009, 90009, 'A009')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40010, 90010, 'A010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_Leave
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40001, 80001, 'L001')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40002, 80002, 'L002')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40003, 80003, 'L003')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40004, 80004, 'L004')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40005, 80005, 'L005')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40006, 80006, 'L006')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40007, 80007, 'L007')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40008, 80008, 'L008')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40009, 80009, 'L009')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40010, 80010, 'L010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_Payslip
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40001, 100001, 'P001')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40002, 100002, 'P002')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40003, 100003, 'P003')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40004, 100004, 'P004')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40005, 100005, 'P005')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40006, 100006, 'P006')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40007, 100007, 'P007')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40008, 100008, 'P008')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40009, 100009, 'P009')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40010, 100010, 'P010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_SupplierItem
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40001, 200001, 'SI001')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40002, 200002, 'SI002')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40003, 200003, 'SI003')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40004, 200004, 'SI004')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40005, 200005, 'SI005')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40006, 200006, 'SI006')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40007, 200007, 'SI007')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40008, 200008, 'SI008')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40009, 200009, 'SI009')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40010, 200010, 'SI010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_Shift
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40001, 70001, 'MORN001')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40002, 70002, 'EVEN002')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40003, 70003, 'MORN003')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40004, 70004, 'EVEN004')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40005, 70005, 'MORN005')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40006, 70006, 'EVEN006')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40007, 70007, 'MORN007')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40008, 70008, 'EVEN008')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40009, 70009, 'NIGHT009')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40010, 70010, 'FLEX010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Employee_Promotion
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40001, 150001, 'PRO001')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40002, 150002, 'PRO002')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40003, 150003, 'PRO003')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40004, 150004, 'PRO004')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40005, 150005, 'PRO005')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40006, 150006, 'PRO006')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40007, 150007, 'PRO007')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40008, 150008, 'PRO008')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40009, 150009, 'PRO009')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40010, 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Product_Franchise
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110001, 240001, 'FRCH-001')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110002, 240002, 'FRCH-002')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110003, 240003, 'FRCH-003')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110004, 240004, 'FRCH-004')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110005, 240005, 'FRCH-005')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110006, 240006, 'FRCH-006')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110007, 240007, 'FRCH-007')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110008, 240008, 'FRCH-008')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110009, 240009, 'FRCH-009')
+INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110010, 240010, 'FRCH-010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Product_Promotion
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110001, 150001, 'PRO001')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110002, 150002, 'PRO002')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110003, 150003, 'PRO003')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110004, 150004, 'PRO004')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110005, 150005, 'PRO005')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110006, 150006, 'PRO006')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110007, 150007, 'PRO007')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110008, 150008, 'PRO008')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110009, 150009, 'PRO009')
+INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110010, 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Feedback_Payment
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160001, 'FB001', 170001, 'TXN001')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160002, 'FB002', 170002, 'TXN002')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160003, 'FB003', 170003, 'TXN003')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160004, 'FB004', 170004, 'TXN004')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160005, 'FB005', 170005, 'TXN005')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160006, 'FB006', 170006, 'TXN006')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160007, 'FB007', 170007, 'TXN007')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160008, 'FB008', 170008, 'TXN008')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160009, 'FB009', 170009, 'TXN009')
+INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160010, 'FB010', 170010, 'TXN010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Payment_Promotion
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170001, 'TXN001', 150001, 'PRO001')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170002, 'TXN002', 150002, 'PRO002')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170003, 'TXN003', 150003, 'PRO003')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170004, 'TXN004', 150004, 'PRO004')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170005, 'TXN005', 150005, 'PRO005')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170006, 'TXN006', 150006, 'PRO006')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170007, 'TXN007', 150007, 'PRO007')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170008, 'TXN008', 150008, 'PRO008')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170009, 'TXN009', 150009, 'PRO009')
+INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170010, 'TXN010', 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Feedback_Promotion
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160001, 'FB001', 150001, 'PRO001')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160002, 'FB002', 150002, 'PRO002')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160003, 'FB003', 150003, 'PRO003')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160004, 'FB004', 150004, 'PRO004')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160005, 'FB005', 150005, 'PRO005')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160006, 'FB006', 150006, 'PRO006')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160007, 'FB007', 150007, 'PRO007')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160008, 'FB008', 150008, 'PRO008')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160009, 'FB009', 150009, 'PRO009')
+INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160010, 'FB010', 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Feedback_Order
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160001, 'FB001', 180001, 'O001')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160002, 'FB002', 180002, 'O002')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160003, 'FB003', 180003, 'O003')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160004, 'FB004', 180004, 'O004')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160005, 'FB005', 180005, 'O005')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160006, 'FB006', 180006, 'O006')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160007, 'FB007', 180007, 'O007')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160008, 'FB008', 180008, 'O008')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160009, 'FB009', 180009, 'O009')
+INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160010, 'FB010', 180010, 'O010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Promotion_Order
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150001, 'PRO001', 180001, 'O001')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150002, 'PRO002', 180002, 'O002')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150003, 'PRO003', 180003, 'O003')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150004, 'PRO004', 180004, 'O004')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150005, 'PRO005', 180005, 'O005')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150006, 'PRO006', 180006, 'O006')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150007, 'PRO007', 180007, 'O007')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150008, 'PRO008', 180008, 'O008')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150009, 'PRO009', 180009, 'O009')
+INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150010, 'PRO010', 180010, 'O010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Franchise_Supplier
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240001, 'FRCH-001', 190001, '202403068790 (KT0565577-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240002, 'FRCH-002', 190002, '675409873476 (KT8764487-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240003, 'FRCH-003', 190003, '124376894567 (KT2398639-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240004, 'FRCH-004', 190004, '091287410384 (KT8194627-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240005, 'FRCH-005', 190005, '273916503846 (KT8104528-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240006, 'FRCH-006', 190006, '189745781423 (KT3409745-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240007, 'FRCH-007', 190007, '202034569846 (KT2780590-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240008, 'FRCH-008', 190008, '871263204928 (KT7184017-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240009, 'FRCH-009', 190009, '248729475629 (KT7193846-D)')
+INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240010, 'FRCH-010', 190010, '274910495736 (KT7105938-D)')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Franchise_SupplierItem
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240001, 'FRCH-001', 200001, 'SI001')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240002, 'FRCH-002', 200002, 'SI002')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240003, 'FRCH-003', 200003, 'SI003')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240004, 'FRCH-004', 200004, 'SI004')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240005, 'FRCH-005', 200005, 'SI005')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240006, 'FRCH-006', 200006, 'SI006')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240007, 'FRCH-007', 200007, 'SI007')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240008, 'FRCH-008', 200008, 'SI008')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240009, 'FRCH-009', 200009, 'SI009')
+INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240010, 'FRCH-010', 200010, 'SI010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Supplier_Feedback
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190001, '202403068790 (KT0565577-D)', 160001, 'FB001')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190002, '675409873476 (KT8764487-D)', 160002, 'FB002')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190003, '124376894567 (KT2398639-D)', 160003, 'FB003')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190004, '091287410384 (KT8194627-D)', 160004, 'FB004')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190005, '273916503846 (KT8104528-D)', 160005, 'FB005')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190006, '189745781423 (KT3409745-D)', 160006, 'FB006')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190007, '202034569846 (KT2780590-D)', 160007, 'FB007')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190008, '871263204928 (KT7184017-D)', 160008, 'FB008')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190009, '248729475629 (KT7193846-D)', 160009, 'FB009')
+INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190010, '274910495736 (KT7105938-D)', 160010, 'FB010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --AssetLog_Franchise
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230001, 'AL1001', 240001, 'FRCH-001')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230002, 'AL1002', 240002, 'FRCH-002')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230003, 'AL1003', 240003, 'FRCH-003')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230004, 'AL1004', 240004, 'FRCH-004')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230005, 'AL1005', 240005, 'FRCH-005')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230006, 'AL1006', 240006, 'FRCH-006')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230007, 'AL1007', 240007, 'FRCH-007')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230008, 'AL1008', 240008, 'FRCH-008')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230009, 'AL1009', 240009, 'FRCH-009')
+INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230010, 'AL1010', 240010, 'FRCH-010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Owner_Staff
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50001, 'TX12345678', 60001, 'ahmad.zulkarnain@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50002, 'TX98765432', 60002, 'siti.nurhaliza@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50003, 'TX56789012', 60003, 'lee.chong.wei@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50004, 'TX34567890', 60004, 'nur.aisyah.binti.rahman@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50005, 'TX67890123', 60005, 'muhammad.farhan@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50006, 'TX90123456', 60006, 'lim.wei.sheng@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50007, 'TX43210987', 60007, 'kavitha.rajendran@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50008, 'TX21098765', 60008, 'ariff.hakim@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50009, 'TX76543210', 60009, 'wong.mei.ling@blackcaravan.com')
+INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50010, 'TX87654321', 60010, 'hafiz.iqbal@blackcaravan.com')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Payment_Product
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170001, 'TXN001', 110001)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170002, 'TXN002', 110002)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170003, 'TXN003', 110003)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170004, 'TXN004', 110004)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170005, 'TXN005', 110005)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170006, 'TXN006', 110006)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170007, 'TXN007', 110007)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170008, 'TXN008', 110008)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170009, 'TXN009', 110009)
+INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170010, 'TXN010', 110010)
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Feedback_Product
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160001, 'FB001', 110001)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160002, 'FB002', 110002)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160003, 'FB003', 110003)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160004, 'FB004', 110004)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160005, 'FB005', 110005)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160006, 'FB006', 110006)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160007, 'FB007', 110007)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160008, 'FB008', 110008)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160009, 'FB009', 110009)
+INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160010, 'FB010', 110010)
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Payment_SupplierItem
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170001, 'TXN001', 200001, 'SI001')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170002, 'TXN002', 200002, 'SI002')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170003, 'TXN003', 200003, 'SI003')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170004, 'TXN004', 200004, 'SI004')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170005, 'TXN005', 200005, 'SI005')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170006, 'TXN006', 200006, 'SI006')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170007, 'TXN007', 200007, 'SI007')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170008, 'TXN008', 200008, 'SI008')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170009, 'TXN009', 200009, 'SI009')
+INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170010, 'TXN010', 200010, 'SI010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Order_Product
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180001, 'O001', 110001)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180002, 'O002', 110002)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180003, 'O003', 110003)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180004, 'O004', 110004)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180005, 'O005', 110005)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180006, 'O006', 110006)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180007, 'O007', 110007)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180008, 'O008', 110008)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180009, 'O009', 110009)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180010, 'O010', 110010)
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Order_Supplier
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180001, 'O001', 190001, '202403068790 (KT0565577-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180002, 'O002', 190002, '675409873476 (KT8764487-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180003, 'O003', 190003, '124376894567 (KT2398639-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180004, 'O004', 190004, '091287410384 (KT8194627-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180005, 'O005', 190005, '273916503846 (KT8104528-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180006, 'O006', 190006, '189745781423 (KT3409745-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180007, 'O007', 190007, '202034569846 (KT2780590-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180008, 'O008', 190008, '871263204928 (KT7184017-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180009, 'O009', 190009, '248729475629 (KT7193846-D)')
+INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180010, 'O010', 190010, '274910495736 (KT7105938-D)')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Payment_Asset
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170001, 'TXN001', 220001, 'AST2001')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170002, 'TXN002', 220002, 'AST2002')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170003, 'TXN003', 220003, 'AST2003')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170004, 'TXN004', 220004, 'AST2004')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170005, 'TXN005', 220005, 'AST2005')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170006, 'TXN006', 220006, 'AST2006')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170007, 'TXN007', 220007, 'AST2007')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170008, 'TXN008', 220008, 'AST2008')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170009, 'TXN009', 220009, 'AST2009')
+INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170010, 'TXN010', 220010, 'AST2010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Feedback_Franchise
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160001, 'FB001', 240001, 'FRCH-001')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160002, 'FB002', 240002, 'FRCH-002')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160003, 'FB003', 240003, 'FRCH-003')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160004, 'FB004', 240004, 'FRCH-004')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160005, 'FB005', 240005, 'FRCH-005')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160006, 'FB006', 240006, 'FRCH-006')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160007, 'FB007', 240007, 'FRCH-007')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160008, 'FB008', 240008, 'FRCH-008')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160009, 'FB009', 240009, 'FRCH-009')
+INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160010, 'FB010', 240010, 'FRCH-010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Feedback_Reservation
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160001,'FB001', 140001, 'R001')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160002,'FB002', 140002, 'R002')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160003,'FB003', 140003, 'R003')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160004,'FB004', 140004, 'R004')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160005,'FB005', 140005, 'R005')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160006,'FB006', 140006, 'R006')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160007,'FB007', 140007, 'R007')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160008,'FB008', 140008, 'R008')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160009,'FB009', 140009, 'R009')
+INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160010,'FB010', 140010, 'R010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Storage_Employee
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250001, 40001)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250002, 40002)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250003, 40003)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250004, 40004)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250005, 40005)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250006, 40006)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250007, 40007)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250008, 40008)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250009, 40009)
+INTO Storage_Employee (Storage_id, Employee_id) VALUES (250010, 40010)
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Storage_Franchise
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250001, 240001, 'FRCH-001')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250002, 240002, 'FRCH-002')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250003, 240003, 'FRCH-003')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250004, 240004, 'FRCH-004')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250005, 240005, 'FRCH-005')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250006, 240006, 'FRCH-006')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250007, 240007, 'FRCH-007')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250008, 240008, 'FRCH-008')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250009, 240009, 'FRCH-009')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (250010, 240010, 'FRCH-010')
+SELECT 1 FROM DUAl;
+
+commit;
+
+
+INSERT ALL --SupplierItem_Feedback
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200001,'SI001', 160001, 'FB001')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200002,'SI002', 160002, 'FB002')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200003,'SI003', 160003, 'FB003')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200004,'SI004', 160004, 'FB004')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200005,'SI005', 160005, 'FB005')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200006,'SI006', 160006, 'FB006')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200007,'SI007', 160007, 'FB007')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200008,'SI008', 160008, 'FB008')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200009,'SI009', 160009, 'FB009')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200010,'SI010', 160010, 'FB010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Storage_SupplierItem
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250001, 200001, 'SI001')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250002, 200002, 'SI002')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250003, 200003, 'SI003')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250004, 200004, 'SI004')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250005, 200005, 'SI005')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250006, 200006, 'SI006')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250007, 200007, 'SI007')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250008, 200008, 'SI008')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250009, 200009, 'SI009')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (250010, 200010, 'SI010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+
+INSERT ALL --Product_Storage
+INTO Product_Storage (Product_id, Storage_id) VALUES (110001, 250001)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110002, 250002)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110003, 250003)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110004, 250004)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110005, 250005)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110006, 250006)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110007, 250007)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110008, 250008)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110009, 250009)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110010, 250010)
 SELECT 1 FROM DUAL;
 
 commit;

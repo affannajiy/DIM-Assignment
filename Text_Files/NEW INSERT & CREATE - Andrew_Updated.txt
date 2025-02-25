@@ -441,6 +441,8 @@ INTO Person (Person_IC_Num, Person_name, Person_age) VALUES ('589175692516', 'Ab
 INTO Person (Person_IC_Num, Person_name, Person_age) VALUES ('107692769173', 'Zack', 27)
 SELECT 1 FROM DUAL; --compulsory for inserting multiple data into one table when using 1 query
 
+commit;
+
 INSERT ALL --inserting data into customer table
     INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                     Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
@@ -514,6 +516,7 @@ VALUES (20010, 'Zack@example.com', '107692769173', 6,
         19.90, 'Takeaway', '01:15:00', 'Solo Meal','889900112')
 SELECT 1 FROM DUAL;
 
+commit;
 
 --command to check if FK is working as intended || have 10 data in CUSTOMER table, when execute this command, it has to have 10 data as well.
 SELECT p.Person_name, p.Person_IC_Num, c.Customer_id, c.Person_IC_Num, c.Customer_dining_purpose
