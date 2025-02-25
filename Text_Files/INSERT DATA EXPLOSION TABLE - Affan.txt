@@ -614,3 +614,63 @@ INTO Storage_Employee (Storage_id, Employee_id) VALUES (110010, 40010)
 SELECT 1 FROM DUAL;
 
 commit;
+
+INSERT ALL --Storage_Franchise
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110001, 240001, 'FRCH-001')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110002, 240002, 'FRCH-002')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110003, 240003, 'FRCH-003')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110004, 240004, 'FRCH-004')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110005, 240005, 'FRCH-005')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110006, 240006, 'FRCH-006')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110007, 240007, 'FRCH-007')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110008, 240008, 'FRCH-008')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110009, 240009, 'FRCH-009')
+INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110010, 240010, 'FRCH-010')
+SELECT 1 FROM DUAl;
+
+commit;
+
+INSERT ALL --SupplierItem_Feedback
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200001,'SI001', 160001, 'FB001')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200002,'SI002', 160002, 'FB002')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200003,'SI003', 160003, 'FB003')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200004,'SI004', 160004, 'FB004')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200005,'SI005', 160005, 'FB005')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200006,'SI006', 160006, 'FB006')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200007,'SI007', 160007, 'FB007')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200008,'SI008', 160008, 'FB008')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200009,'SI009', 160009, 'FB009')
+INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200010,'SI010', 160010, 'FB010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Storage_SupplierItem
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240001, 200001, 'SI001')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240002, 200002, 'SI002')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240003, 200003, 'SI003')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240004, 200004, 'SI004')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240005, 200005, 'SI005')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240006, 200006, 'SI006')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240007, 200007, 'SI007')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240008, 200008, 'SI008')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240009, 200009, 'SI009')
+INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240010, 200010, 'SI010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Product_Storage
+INTO Product_Storage (Product_id, Storage_id) VALUES (110001, 240001)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110002, 240002)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110003, 240003)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110004, 240004)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110005, 240005)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110006, 240006)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110007, 240007)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110008, 240008)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110009, 240009)
+INTO Product_Storage (Product_id, Storage_id) VALUES (110010, 240010)
+SELECT 1 FROM DUAL;
+
+commit;
