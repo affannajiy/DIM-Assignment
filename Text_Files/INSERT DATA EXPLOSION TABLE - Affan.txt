@@ -74,3 +74,93 @@ INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_
 SELECT 1 FROM DUAL;
 
 commit;
+
+INSERT ALL --Person_Asset
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (990101101234, 220001, 'AST2001')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (960512085678, 220002, 'AST2002')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (971230052468, 220003, 'AST2003')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (030221091123, 220004, 'AST2004')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (950415073344, 220005, 'AST2005')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (880908145566, 220006, 'AST2006')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (920731127788, 220007, 'AST2007')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (011001069900, 220008, 'AST2008')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (000712112233, 220009, 'AST2009')
+INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (981105024455, 220010, 'AST2010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Person_Product
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (990101101234, 110001)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (960512085678, 110002)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (971230052468, 110003)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (030221091123, 110004)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (950415073344, 110005)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (880908145566, 110006)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (920731127788, 110007)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (011001069900, 110008)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (000712112233, 110009)
+INTO Person_Product (Person_IC_Num, Product_id) VALUES (981105024455, 110010)
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Person_Payment
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (990101101234, 170001, 'TXN001')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (960512085678, 170002, 'TXN002')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (971230052468, 170003, 'TXN003')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (030221091123, 170004, 'TXN004')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (950415073344, 170005, 'TXN005')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (880908145566, 170006, 'TXN006')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (920731127788, 170007, 'TXN007')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (011001069900, 170008, 'TXN008')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (000712112233, 170009, 'TXN009')
+INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (981105024455, 170010, 'TXN010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Person_Feedback
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (990101101234, 160001, 'FB001')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (960512085678, 160002, 'FB002')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (971230052468, 160003, 'FB003')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (030221091123, 160004, 'FB004')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (950415073344, 160005, 'FB005')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (880908145566, 160006, 'FB006')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (920731127788, 160007, 'FB007')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (011001069900, 160008, 'FB008')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (000712112233, 160009, 'FB009')
+INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (981105024455, 160010, 'FB010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Person_Order
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (990101101234, 180001, 'O001')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (960512085678, 180002, 'O002')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (971230052468, 180003, 'O003')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (030221091123, 180004, 'O004')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (950415073344, 180005, 'O005')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (880908145566, 180006, 'O006')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (920731127788, 180007, 'O007')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (011001069900, 180008, 'O008')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (000712112233, 180009, 'O009')
+INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (981105024455, 180010, 'O010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Person_Franchise
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (990101101234, 240001, 'FRCH-001')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (960512085678, 240002, 'FRCH-002')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (971230052468, 240003, 'FRCH-003')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (030221091123, 240004, 'FRCH-004')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (950415073344, 240005, 'FRCH-005')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (880908145566, 240006, 'FRCH-006')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (920731127788, 240007, 'FRCH-007')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (011001069900, 240008, 'FRCH-008')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (000712112233, 240009, 'FRCH-009')
+INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (981105024455, 240010, 'FRCH-010')
+SELECT 1 FROM DUAL;
+
+commit;
