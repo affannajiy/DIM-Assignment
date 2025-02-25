@@ -1,21 +1,24 @@
---CREATE TABLE 2.0 (All normal tables)
+CREATE TABLE 3.0 (All normal tables)
 
-CREATE TABLE Person (
+
+
+create table Person (
     Person_IC_Num VARCHAR2(20) PRIMARY KEY,
     Person_name varchar2(100),
     Person_age INT
 );
 
-CREATE TABLE Customer (
+create table Customer (
     Customer_id INT,
     Customer_personal_email VARCHAR(100),
     Person_IC_Num VARCHAR2(20),
     Customer_table_number INT,
-    Customer_walk_in_date DATE,
-    Customer_walk_out_date DATE,
+    Customer_walk_in_date TIMESTAMP,
+    Customer_walk_out_date TIMESTAMP,
     Customer_total_spent DECIMAL(20,2),
     Customer_dining_option VARCHAR2(255),
     Customer_time_spent VARCHAR2(20),
+    Customer_dining_purpose VARCHAR2(255),
     Customer_phoneNumber  VARCHAR2(20),
     PRIMARY KEY (Customer_id, Customer_personal_email),
     foreign key (Person_IC_Num) references PERSON(Person_IC_Num)
@@ -82,10 +85,17 @@ CREATE TABLE Staff (
     foreign key (Person_IC_Num) references Person(Person_IC_Num)
 );
 
+CREATE table Storage (
+    Storage_id INT,
+    Storage_Barcode varchar2(100),
+    Storage_acquisition_date DATE,
+    PRIMARY KEY (Storage_id)
+);
+
 CREATE TABLE Franchise (
     Franchise_id INT,
     Franchise_code VARCHAR2(20),
-    Franchise_ownerName VARCHAR2(100) NOT NULL,
+    Franchise_contact_num VARCHAR2(100) NOT NULL,
     Franchise_address VARCHAR2(255),
     Franchise_postcode VARCHAR2(20),
     Franchise_state VARCHAR2(50),
@@ -96,76 +106,6 @@ CREATE TABLE Franchise (
     PRIMARY KEY (Franchise_id, Franchise_code)
 );
 
-CREATE TABLE Supplier (
-    Supplier_id INT,
-    Supplier_ssm varchar2(50),
-    Supplier_companyName varchar2(100),
-    Supplier_contactName varchar2(50),
-    Supplier_phoneNumber varchar(50),
-    Supplier_address varchar2(100),
-    Supplier_productType varchar2(50),
-    Supplier_supplyFrequency varchar2(100),
-    Supplier_paymentType varchar2(50),
-    Supplier_email varchar2(100),
-    PRIMARY KEY (Supplier_id, Supplier_ssm)
-);
-
-CREATE TABLE Storage (
-    Storage_id INT,
-    Storage_Barcode varchar2(100),
-    Storage_acquisition_date DATE,
-    PRIMARY KEY (Storage_id)
-);
-
-CREATE TABLE Asset (
-    Asset_id INT,
-    Asset_code VARCHAR2(50),
-    Storage_id INT,
-    Asset_category varchar2(100),
-    Asset_start_date DATE,
-    Asset_dispose_date DATE,
-    Asset_lifespan VARCHAR2(20),
-    Asset_description VARCHAR2(100),
-    Asset_picture VARCHAR2(100),
-    Asset_last_maintenance_date DATE,
-    Asset_next_maintenance_date DATE,
-    PRIMARY KEY (Asset_id, Asset_code),
-    foreign key (Storage_id) references STORAGE(Storage_id)
-);
-
-CREATE TABLE Asset_Log (
-    AssetLog_id INT,
-    AssetLog_code VARCHAR2(20),
-    Asset_id INT,
-    Asset_code VARCHAR2(20),
-    AssetLog_usage_start_time VARCHAR2(10),
-    AssetLog_usage_end_time VARCHAR2(20),
-    AssetLog_usage_date DATE,
-    AssetLog_usage_duration VARCHAR2(10), -- Changed from DATETIME to TIMESTAMP for Oracle compatibility
-    AssetLog_description VARCHAR2(255),
-    AssetLog_remarks VARCHAR2(255),
-    AssetLog_condition VARCHAR2(50),
-    AssetLog_location_used VARCHAR2(100),
-    PRIMARY KEY (AssetLog_id, AssetLog_code),
-    foreign key (Asset_id, Asset_code) references Asset(Asset_id, Asset_code)
-);
-
-CREATE TABLE SupplierItem (
-    SupplierItem_id INT,
-    SupplierItem_code VARCHAR2(50),
-    Supplier_id INT,
-    Supplier_ssm VARCHAR2(50),
-    SupplierItem_Name VARCHAR2(50),
-    SupplierItem_category VARCHAR2(50),
-    Qty_per_unit INT,
-    SupplierItem_unit_price DECIMAL(8,2),
-    Available_Stock DECIMAL(8,2),
-    Expiration_date DATE,
-    Last_ordered_date DATE,
-    SupplierItem_quantity INT,
-    PRIMARY KEY (SupplierItem_id, SupplierItem_code),
-    foreign key (Supplier_id, Supplier_ssm) references Supplier(Supplier_id, Supplier_ssm)
-);
 
 CREATE TABLE Reservation (
     Reservation_id INT,
@@ -214,42 +154,9 @@ CREATE TABLE Product (
     PRIMARY KEY (Product_id)
 );
 
-CREATE TABLE Food (
-    Food_id INT,
-    Food_code VARCHAR2(20),
-    Product_id INT,
-    Food_picture VARCHAR2(50),
-    Food_description VARCHAR(255),
-    Food_price DECIMAL(6,2),
-    Food_servingSize VARCHAR2(50),
-    Food_availabilityStatus VARCHAR2(50),
-    Food_availabilityStock VARCHAR2(50),
-    Food_category VARCHAR2(100),
-    Food_cookingMethod VARCHAR(100),
-    PRIMARY KEY (Food_id, Food_code),
-    foreign key (Product_id) references PRODUCT(Product_id)
-);
-
-CREATE TABLE Drink (
-    Drink_id INT,
-    Drink_code VARCHAR(20),
-    Product_id INT,
-    Drink_picture VARCHAR2(50),
-    Drink_price DECIMAL(6,2),
-    Drink_availabilityStock VARCHAR2(50),
-    Drink_category VARCHAR2(100),
-    Drink_temperature VARCHAR2(50),
-    Drink_carbonationStatus VARCHAR2(50),
-    Drink_availabilityStatus VARCHAR2(50),
-    Drink_size VARCHAR2(50),
-    PRIMARY KEY (Drink_id, Drink_code),
-    foreign key (Product_id) references PRODUCT(Product_id)
-);
-
 CREATE TABLE Promotion (
     Promotion_id INT,
     Promotion_refNo VARCHAR2(20),
-    Employee_id INT,
     Promotion_date_start DATE,
     Promotion_date_end DATE,
     Promotion_food_list VARCHAR2(255),
@@ -258,8 +165,57 @@ CREATE TABLE Promotion (
     Promotion_name VARCHAR2(100),
     Promotion_duration VARCHAR2(50),
     Promotion_reason VARCHAR2(100),
-    PRIMARY KEY (Promotion_id, Promotion_refNo),
-    foreign key (Employee_id) references Employee(Employee_id)
+    PRIMARY KEY (Promotion_id, Promotion_refNo)
+);
+
+CREATE table Supplier (
+    Supplier_id INT,
+    Supplier_ssm varchar2(50),
+    Supplier_companyName varchar2(100),
+    Supplier_contactName varchar2(50),
+    Supplier_phoneNumber varchar(50),
+    Supplier_address varchar2(100),
+    Supplier_productType varchar2(50),
+    Supplier_supplyFrequency varchar2(100),
+    Supplier_paymentType varchar2(50),
+    Supplier_email varchar2(100),
+    PRIMARY KEY (Supplier_id, Supplier_ssm)
+);
+
+CREATE TABLE Asset (
+    Asset_id INT,
+    Asset_code VARCHAR2(50),
+    Storage_id INT,
+    Supplier_id INT,
+    Supplier_ssm VARCHAR2(50),
+    Asset_category varchar2(100),
+    Asset_start_date DATE,
+    Asset_dispose_date DATE,
+    Asset_lifespan VARCHAR2(20),
+    Asset_description VARCHAR2(100),
+    Asset_picture VARCHAR2(100),
+    Asset_last_maintenance_date DATE,
+    Asset_next_maintenance_date DATE,
+    PRIMARY KEY (Asset_id, Asset_code),
+    foreign key (Storage_id) references STORAGE(Storage_id),
+    foreign key (Supplier_id, Supplier_ssm) references SUPPLIER(Supplier_id, Supplier_ssm)
+);
+
+CREATE TABLE SupplierItem (
+    SupplierItem_id INT,
+    SupplierItem_code VARCHAR2(50),
+    Supplier_id INT,
+    Supplier_ssm VARCHAR2(50),
+    SupplierItem_Name VARCHAR2(50),
+    SupplierItem_category VARCHAR2(50),
+    Qty_per_unit INT,
+    SupplierItem_unit_price DECIMAL(8,2),
+    Available_Stock DECIMAL(8,2),
+    Expiration_date DATE,
+    Last_ordered_date DATE,
+    SupplierItem_quantity INT,
+    PRIMARY KEY (SupplierItem_id, SupplierItem_code),
+    foreign key (Supplier_id, Supplier_ssm) references Supplier(Supplier_id, Supplier_ssm)
 );
 
 CREATE TABLE Payslip (
@@ -336,6 +292,55 @@ CREATE TABLE Leave (
     foreign key (Franchise_id, Franchise_code) references FRANCHISE(Franchise_id, Franchise_code)
 );
 
+CREATE TABLE Food (
+    Food_id INT,
+    Food_code VARCHAR2(20),
+    Product_id INT,
+    Food_picture VARCHAR2(50),
+    Food_description VARCHAR(255),
+    Food_cost DECIMAL(6,2),
+    Food_servingSize VARCHAR2(50),
+    Food_availabilityStatus VARCHAR2(50),
+    Food_availabilityStock VARCHAR2(50),
+    Food_category VARCHAR2(100),
+    Food_cookingMethod VARCHAR(100),
+    PRIMARY KEY (Food_id, Food_code),
+    foreign key (Product_id) references PRODUCT(Product_id)
+);
+
+CREATE TABLE Drink (
+    Drink_id INT,
+    Drink_code VARCHAR(20),
+    Product_id INT,
+    Drink_picture VARCHAR2(50),
+    Drink_cost DECIMAL(6,2),
+    Drink_availabilityStock VARCHAR2(50),
+    Drink_category VARCHAR2(100),
+    Drink_temperature VARCHAR2(50),
+    Drink_carbonationStatus VARCHAR2(50),
+    Drink_availabilityStatus VARCHAR2(50),
+    Drink_size VARCHAR2(50),
+    PRIMARY KEY (Drink_id, Drink_code),
+    foreign key (Product_id) references PRODUCT(Product_id)
+);
+
+CREATE TABLE Asset_Log (
+    AssetLog_id INT,
+    AssetLog_code VARCHAR2(20),
+    Asset_id INT,
+    Asset_code VARCHAR2(20),
+    AssetLog_usage_start_time VARCHAR2(10),
+    AssetLog_usage_end_time VARCHAR2(20),
+    AssetLog_usage_date DATE,
+    AssetLog_usage_duration VARCHAR2(10), -- Changed from DATETIME to TIMESTAMP for Oracle compatibility
+    AssetLog_description VARCHAR2(255),
+    AssetLog_remarks VARCHAR2(255),
+    AssetLog_condition VARCHAR2(50),
+    AssetLog_location_used VARCHAR2(100),
+    PRIMARY KEY (AssetLog_id, AssetLog_code),
+    foreign key (Asset_id, Asset_code) references Asset(Asset_id, Asset_code)
+);
+
 CREATE TABLE Feedback (
     Feedback_id INT,
     Feedback_Code VARCHAR2(20),
@@ -388,3 +393,7 @@ CREATE TABLE Payment (
     foreign key (Supplier_id, Supplier_ssm) references SUPPLIER(Supplier_id, Supplier_ssm),
     foreign key (Franchise_id, Franchise_code) references FRANCHISE(Franchise_id, Franchise_code)
 );
+
+
+
+

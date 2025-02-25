@@ -1,0 +1,46 @@
+--INSERT EXPLOSION TABLE
+
+INSERT ALL --Franchise_Promotion
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110001, 'FRCH-001', 150001, 'PRO001')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110002, 'FRCH-002', 150002, 'PRO002')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110003, 'FRCH-003', 150003, 'PRO003')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110004, 'FRCH-004', 150004, 'PRO004')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110005, 'FRCH-005', 150005, 'PRO005')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110006, 'FRCH-006', 150006, 'PRO006')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110007, 'FRCH-007', 150007, 'PRO007')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110008, 'FRCH-008', 150008, 'PRO008')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110009, 'FRCH-009', 150009, 'PRO009')
+INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110010, 'FRCH-010', 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Customer_DeliveryPerson
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20001, 'chong.siew.mei@example.com', 30001, 'ABC123456', 'WX1234')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20002, 'rahman.iskandar@example.com', 30002, 'XYZ987654', 'UV5678')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20003, 'tan.mei.fen@example.com', 30003, 'LMN456789', 'GH9012')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20004, 'samuel.raj@example.com', 30004, 'PQR321654', 'JK3456')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20005, 'aina.sofea@example.com', 30005, 'DEF654321', 'MN7890')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20006, 'suraya.hanim@example.com', 30006, 'GHI789123', 'OP2345')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20007, 'mohd.faiz@example.com', 30007, 'STU987321', 'QR6789')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20008, 'muhammad.yusof@example.com', 30008, 'VWX654879', 'ST8901')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20009, 'noraini.mohamed@example.com', 30009, 'YZA321654', 'UV3456')
+INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20010, 'abdullah.ahmad@example.com', 30010, 'BCD987456', 'WX7890')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Customer_Promotion
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20001, 'chong.siew.mei@example.com', 150001, 'PRO001')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20002, 'rahman.iskandar@example.com', 150002, 'PRO002')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20003, 'tan.mei.fen@example.com', 150003, 'PRO003')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20004, 'samuel.raj@example.com', 150004, 'PRO004')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20005, 'aina.sofea@example.com', 150005, 'PRO005')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20006, 'suraya.hanim@example.com', 150006, 'PRO006')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20007, 'mohd.faiz@example.com', 150007, 'PRO007')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20008, 'muhammad.yusof@example.com', 150008, 'PRO008')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20009, 'noraini.mohamed@example.com', 150009, 'PRO009')
+INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20010, 'abdullah.ahmad@example.com', 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
