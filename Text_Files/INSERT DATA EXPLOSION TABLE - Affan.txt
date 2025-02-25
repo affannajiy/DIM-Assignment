@@ -164,3 +164,138 @@ INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (9811
 SELECT 1 FROM DUAL;
 
 commit;
+
+INSERT ALL --Employee_Supplier
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40001, 190001, '202403068790 (KT0565577-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40002, 190002, '675409873476 (KT8764487-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40003, 190003, '124376894567 (KT2398639-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40004, 190004, '091287410384 (KT8194627-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40005, 190005, '273916503846 (KT8104528-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40006, 190006, '189745781423 (KT3409745-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40007, 190007, '202034569846 (KT2780590-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40008, 190008, '871263204928 (KT7184017-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40009, 190009, '248729475629 (KT7193846-D)')
+INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40010, 190010, '274910495736 (KT7105938-D)')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Employee_Customer
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40001, 20001, 'chong.siew.mei@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40002, 20002, 'rahman.iskandar@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40003, 20003, 'tan.mei.fen@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40004, 20004, 'samuel.raj@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40005, 20005, 'aina.sofea@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40006, 20006, 'suraya.hanim@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40007, 20007, 'mohd.faiz@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40008, 20008, 'aishah.zainal@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40009, 20009, 'anwar.hadi@example.com')
+INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40010, 20010, 'syafiq.ismail@example.com')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Employee_AssetLog
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40001, 230001, 'AL1001')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40002, 230002, 'AL1002')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40003, 230003, 'AL1003')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40004, 230004, 'AL1004')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40005, 230005, 'AL1005')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40006, 230006, 'AL1006')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40007, 230007, 'AL1007')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40008, 230008, 'AL1008')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40009, 230009, 'AL1009')
+INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40010, 230010, 'AL1010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Employee_Attendance
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40001, 90001, 'A001')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40002, 90002, 'A002')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40003, 90003, 'A003')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40004, 90004, 'A004')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40005, 90005, 'A005')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40006, 90006, 'A006')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40007, 90007, 'A007')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40008, 90008, 'A008')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40009, 90009, 'A009')
+INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40010, 90010, 'A010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Employee_Leave
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40001, 80001, 'L001')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40002, 80002, 'LOO2')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40003, 80003, 'LOO3')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40004, 80004, 'LOO4')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40005, 80005, 'LOO5')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40006, 80006, 'LOO6')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40007, 80007, 'LOO7')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40008, 80008, 'LOO8')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40009, 80009, 'LOO9')
+INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40010, 80010, 'LO10')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Employee_Payslip
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40001, 100001, 'P001')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40002, 100002, 'P002')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40003, 100003, 'P003')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40004, 100004, 'P004')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40005, 100005, 'P005')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40006, 100006, 'P006')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40007, 100007, 'P007')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40008, 100008, 'P008')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40009, 100009, 'P009')
+INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40010, 100010, 'P010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Employee_SupplierItem
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40001, 200001, 'SI001')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40002, 200002, 'SI002')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40003, 200003, 'SI003')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40004, 200004, 'SI004')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40005, 200005, 'SI005')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40006, 200006, 'SI006')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40007, 200007, 'SI007')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40008, 200008, 'SI008')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40009, 200009, 'SI009')
+INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40010, 200010, 'SI010')
+SELECT 1 FROM DUAL
+
+commit;
+
+INSERT ALL --Employee_Shift
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40001, 70001, 'MORN001')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40002, 70002, 'EVEN002')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40003, 70003, 'MORN003')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40004, 70004, 'EVEN004')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40005, 70005, 'MORN005')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40006, 70006, 'EVEN006')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40007, 70007, 'MORN007')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40008, 70008, 'EVEN008')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40009, 70009, 'NIGHT009')
+INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40010, 70010, 'FLEX010')
+SELECT 1 FROM DUAL;
+
+commit;
+
+INSERT ALL --Employee_Promotion
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40001, 150001, 'PRO001')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40002, 150002, 'PRO002')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40003, 150003, 'PRO003')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40004, 150004, 'PRO004')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40005, 150005, 'PRO005')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40006, 150006, 'PRO006')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40007, 150007, 'PRO007')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40008, 150008, 'PRO008')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40009, 150009, 'PRO009')
+INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40010, 150010, 'PRO010')
+SELECT 1 FROM DUAL;
+
+commit;
