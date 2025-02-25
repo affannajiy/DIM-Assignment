@@ -13,7 +13,6 @@ INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_
 INTO Franchise_Promotion (Franchise_id, Franchise_code, Promotion_id, Promotion_refNo) VALUES (110010, 'FRCH-010', 150010, 'PRO010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Customer_DeliveryPerson
 INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20001, 'chong.siew.mei@example.com', 30001, 'ABC123456', 'WX1234')
@@ -28,7 +27,6 @@ INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPers
 INTO Customer_DeliveryPerson (Customer_id, Customer_personal_email, DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate) VALUES (20010, 'abdullah.ahmad@example.com', 30010, 'BCD987456', 'WX7890')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Customer_Promotion
 INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20001, 'chong.siew.mei@example.com', 150001, 'PRO001')
@@ -43,7 +41,6 @@ INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Pro
 INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Promotion_refNo) VALUES (20010, 'abdullah.ahmad@example.com', 150010, 'PRO010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --DeliveryPerson_Staff
 INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30001, 'ABC123456', 'WX1234', 60001, 'ahmad.zulkarnain@example.com')
@@ -58,7 +55,6 @@ INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPe
 INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30010, 'BCD987456', 'WX7890', 60010, 'hafiz.iqbal@example.com')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Staff_Reservation
 INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60001, 'ahmad.zulkarnain@example.com', 140001, 'R001')
@@ -73,7 +69,6 @@ INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_
 INTO Staff_Reservation (Staff_id, Staff_work_email, Reservation_id, Reservation_code) VALUES (60010, 'hafiz.iqbal@example.com', 140010, 'R010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Person_Asset
 INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (990101101234, 220001, 'AST2001')
@@ -88,7 +83,6 @@ INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (000712112233, 22
 INTO Person_Asset (Person_IC_Num, Asset_id, Asset_code) VALUES (981105024455, 220010, 'AST2010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Person_Product
 INTO Person_Product (Person_IC_Num, Product_id) VALUES (990101101234, 110001)
@@ -103,7 +97,6 @@ INTO Person_Product (Person_IC_Num, Product_id) VALUES (000712112233, 110009)
 INTO Person_Product (Person_IC_Num, Product_id) VALUES (981105024455, 110010)
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Person_Payment
 INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (990101101234, 170001, 'TXN001')
@@ -118,7 +111,6 @@ INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (
 INTO Person_Payment (Person_IC_Num, Payment_id, Payment_transactionRef) VALUES (981105024455, 170010, 'TXN010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Person_Feedback
 INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (990101101234, 160001, 'FB001')
@@ -133,7 +125,6 @@ INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (0007121
 INTO Person_Feedback (Person_IC_Num, Feedback_id, Feedback_code) VALUES (981105024455, 160010, 'FB010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Person_Order
 INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (990101101234, 180001, 'O001')
@@ -148,7 +139,6 @@ INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (000712112233, 18
 INTO Person_Order (Person_IC_Num, Order_id, Order_code) VALUES (981105024455, 180010, 'O010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Person_Franchise
 INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (990101101234, 240001, 'FRCH-001')
@@ -163,7 +153,6 @@ INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (0007
 INTO Person_Franchise (Person_IC_Num, Franchise_id, Franchise_code) VALUES (981105024455, 240010, 'FRCH-010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_Supplier
 INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40001, 190001, '202403068790 (KT0565577-D)')
@@ -178,7 +167,6 @@ INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40009, 1
 INTO Employee_Supplier (Employee_id, Supplier_id, Supplier_ssm) VALUES (40010, 190010, '274910495736 (KT7105938-D)')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_Customer
 INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40001, 20001, 'chong.siew.mei@example.com')
@@ -193,7 +181,6 @@ INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUE
 INTO Employee_Customer (Employee_id, Customer_id, Customer_Personal_email) VALUES (40010, 20010, 'syafiq.ismail@example.com')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_AssetLog
 INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40001, 230001, 'AL1001')
@@ -208,7 +195,6 @@ INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40009, 
 INTO Employee_AssetLog (Employee_id, AssetLog_id, AssetLog_code) VALUES (40010, 230010, 'AL1010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_Attendance
 INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40001, 90001, 'A001')
@@ -223,7 +209,6 @@ INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (4
 INTO Employee_Attendance (Employee_id, Attendance_id, Attendance_code) VALUES (40010, 90010, 'A010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_Leave
 INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40001, 80001, 'L001')
@@ -238,7 +223,6 @@ INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40009, 80009, 'L
 INTO Employee_Leave (Employee_id, Leave_id, Leave_code) VALUES (40010, 80010, 'LO10')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_Payslip
 INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40001, 100001, 'P001')
@@ -253,7 +237,6 @@ INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40009, 100
 INTO Employee_Payslip (Employee_id, Payslip_id, Payslip_code) VALUES (40010, 100010, 'P010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_SupplierItem
 INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40001, 200001, 'SI001')
@@ -266,9 +249,8 @@ INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VAL
 INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40008, 200008, 'SI008')
 INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40009, 200009, 'SI009')
 INTO Employee_SupplierItem (Employee_id, SupplierItem_id, SupplierItem_code) VALUES (40010, 200010, 'SI010')
-SELECT 1 FROM DUAL
+SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_Shift
 INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40001, 70001, 'MORN001')
@@ -283,7 +265,6 @@ INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40009, 70009, 'N
 INTO Employee_Shift (Employee_id, Shift_id, Shift_code) VALUES (40010, 70010, 'FLEX010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Employee_Promotion
 INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40001, 150001, 'PRO001')
@@ -298,7 +279,6 @@ INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (400
 INTO Employee_Promotion (Employee_id, Promotion_id, Promotion_refNo) VALUES (40010, 150010, 'PRO010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Product_Franchise
 INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110001, 240001, 'FRCH-001')
@@ -313,7 +293,6 @@ INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110009
 INTO Product_Franchise (Product_id, Franchise_id, Franchise_code) VALUES (110010, 240010, 'FRCH-010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Product_Promotion
 INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110001, 150001, 'PRO001')
@@ -328,7 +307,6 @@ INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (11000
 INTO Product_Promotion (Product_id, Promotion_id, Promotion_refNo) VALUES (110010, 150010, 'PRO010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Feedback_Payment
 INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160001, 'FB001', 170001, 'TXN001')
@@ -343,7 +321,6 @@ INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transacti
 INTO Feedback_Payment (Feedback_id, Feedback_code, Payment_id, Payment_transactionRef) VALUES (160010, 'FB010', 170010, 'TXN010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Payment_Promotion
 INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170001, 'TXN001', 150001, 'PRO001')
@@ -358,7 +335,6 @@ INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promot
 INTO Payment_Promotion (Payment_id, Payment_transactionRef, Promotion_id, Promotion_refNo) VALUES (170010, 'TXN010', 150010, 'PRO010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Feedback_Promotion
 INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160001, 'FB001', 150001, 'PRO001')
@@ -373,7 +349,6 @@ INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_ref
 INTO Feedback_Promotion (Feedback_id, Feedback_code, Promotion_id, Promotion_refNo) VALUES (160010, 'FB010', 150010, 'PRO010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Feedback_Order
 INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160001, 'FB001', 180001, 'O001')
@@ -388,7 +363,6 @@ INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (1
 INTO Feedback_Order (Feedback_id, Feedback_code, Order_id, Order_code) VALUES (160010, 'FB010', 180010, 'O010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Promotion_Order
 INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150001, 'PRO001', 180001, 'O001')
@@ -403,7 +377,6 @@ INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUE
 INTO Promotion_Order (Promotion_id, Promotion_refNo, Order_id, Order_code) VALUES (150010, 'PRO010', 180010, 'O010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Franchise_Supplier
 INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240001, 'FRCH-001', 190001, '202403068790 (KT0565577-D)')
@@ -418,7 +391,6 @@ INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm
 INTO Franchise_Supplier (Franchise_id, Franchise_code, Supplier_id, Supplier_ssm) VALUES (240010, 'FRCH-010', 190010, '274910495736 (KT7105938-D)')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Franchise_SupplierItem
 INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240001, 'FRCH-001', 200001, 'SI001')
@@ -433,7 +405,6 @@ INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, Supp
 INTO Franchise_SupplierItem (Franchise_id, Franchise_code, SupplierItem_id, SupplierItem_code) VALUES (240010, 'FRCH-010', 200010, 'SI010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Supplier_Feedback
 INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190001, '202403068790 (KT0565577-D)', 160001, 'FB001')
@@ -448,7 +419,6 @@ INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) V
 INTO Supplier_Feedback (Supplier_id, Supplier_ssm, Feedback_id, Feedback_code) VALUES (190010, '274910495736 (KT7105938-D)', 160010, 'FB010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --AssetLog_Franchise
 INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230001, 'AL001', 240001, 'FRCH-001')
@@ -463,7 +433,6 @@ INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_cod
 INTO AssetLog_Franchise (AssetLog_id, AssetLog_code, Franchise_id, Franchise_code) VALUES (230010, 'AL010', 240010, 'FRCH-010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Owner_Staff
 INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50001, 'TX12345678', 60001, 'ahmad.zulkarnain@example.com')
@@ -478,7 +447,6 @@ INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50
 INTO Owner_Staff (Owner_id, Owner_tax_no, Staff_id, Staff_work_email) VALUES (50010, 'TX87654321', 60010, 'hafiz.iqbal@example.com')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Payment_Product
 INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170001, 'FB001', 110001)
@@ -493,7 +461,6 @@ INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (17
 INTO Payment_Product (Payment_id, Payment_transactionRef, Product_id) VALUES (170010, 'FB010', 110010)
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Feedback_Product
 INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160001, 'FB001', 110001)
@@ -508,7 +475,6 @@ INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160009, '
 INTO Feedback_Product (Feedback_id, Feedback_code, Product_id) VALUES (160010, 'FB010', 110010)
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Payment_SupplierItem
 INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170001, 'TXN001', 200001, 'SI001')
@@ -523,7 +489,6 @@ INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, 
 INTO Payment_SupplierItem (Payment_id, Payment_transactionRef, SupplierItem_id, SupplierItem_code) VALUES (170010, 'TXN010', 200010, 'SI010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Order_Product
 INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180001, 'O001', 110001)
@@ -538,7 +503,6 @@ INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180009, 'O009', 11
 INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180010, 'O010', 110010)
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Order_Supplier
 INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180001, 'O001', 110001, '202403068790 (KT0565577-D)')
@@ -553,7 +517,6 @@ INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (18
 INTO Order_Supplier (Order_id, Order_code, Supplier_id, Supplier_ssm) VALUES (180010, 'O010', 110010, '274910495736 (KT7105938-D)')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Payment_Asset
 INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170001, 'TXN001', 220001, 'AST001')
@@ -568,7 +531,6 @@ INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VA
 INTO Payment_Asset (Payment_id, Payment_transactionRef, Asset_id, Asset_code) VALUES (170010, 'TXN010', 220010, 'AST010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Feedback_Franchise
 INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160001, 'FB001', 240001, 'FRCH-001')
@@ -583,7 +545,6 @@ INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_cod
 INTO Feedback_Franchise (Feedback_id, Feedback_code, Franchise_id, Franchise_code) VALUES (160010, 'FB010', 240010, 'FRCH-010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Feedback_Reservation
 INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160001,'FB001', 140001, 'R001')
@@ -598,7 +559,6 @@ INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservati
 INTO Feedback_Reservation (Feedback_id, Feedback_code, Reservation_id, Reservation_code) VALUES (160010,'FB010', 140010, 'R010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Storage_Employee
 INTO Storage_Employee (Storage_id, Employee_id) VALUES (110001, 40001)
@@ -613,8 +573,6 @@ INTO Storage_Employee (Storage_id, Employee_id) VALUES (110009, 40009)
 INTO Storage_Employee (Storage_id, Employee_id) VALUES (110010, 40010)
 SELECT 1 FROM DUAL;
 
-commit;
-
 INSERT ALL --Storage_Franchise
 INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110001, 240001, 'FRCH-001')
 INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110002, 240002, 'FRCH-002')
@@ -628,7 +586,6 @@ INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110009
 INTO Storage_Franchise (Storage_id, Franchise_id, Franchise_code) VALUES (110010, 240010, 'FRCH-010')
 SELECT 1 FROM DUAl;
 
-commit;
 
 INSERT ALL --SupplierItem_Feedback
 INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200001,'SI001', 160001, 'FB001')
@@ -643,7 +600,6 @@ INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Fee
 INTO SupplierItem_Feedback (SupplierItem_id, SupplierItem_code, Feedback_id, Feedback_code) VALUES (200010,'SI010', 160010, 'FB010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Storage_SupplierItem
 INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240001, 200001, 'SI001')
@@ -658,7 +614,6 @@ INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUE
 INTO Storage_SupplierItem (Storage_id, SupplierItem_id, SupplierItem_code) VALUES (240010, 200010, 'SI010')
 SELECT 1 FROM DUAL;
 
-commit;
 
 INSERT ALL --Product_Storage
 INTO Product_Storage (Product_id, Storage_id) VALUES (110001, 240001)

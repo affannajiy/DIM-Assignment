@@ -424,3 +424,5 @@ CREATE TABLE Product_Storage (
     foreign key (Product_id) references PRODUCT(Product_id),
     foreign key (Storage_id) references STORAGE(Storage_id)
 );
+
+commit;
