@@ -912,45 +912,45 @@ from Product prd
 
 INSERT ALL --DATA INJECTION FOR STORAGE
     INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240001, 'STO-20250001', TO_DATE('2025-01-10', 'YYYY-MM-DD'))
+VALUES (250001, 'STO-20250001', TO_DATE('2025-01-10', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240002, 'STO-20250002', TO_DATE('2025-01-15', 'YYYY-MM-DD'))
+VALUES (250002, 'STO-20250002', TO_DATE('2025-01-15', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240003, 'STO-20250003', TO_DATE('2024-03-05', 'YYYY-MM-DD'))
+VALUES (250003, 'STO-20250003', TO_DATE('2024-03-05', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240004, 'STO-20250004', TO_DATE('2024-03-25', 'YYYY-MM-DD'))
+VALUES (250004, 'STO-20250004', TO_DATE('2024-03-25', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240005, 'STO-20250005', TO_DATE('2024-04-12', 'YYYY-MM-DD'))
+VALUES (250005, 'STO-20250005', TO_DATE('2024-04-12', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240006, 'STO-20250006', TO_DATE('2024-05-08', 'YYYY-MM-DD'))
+VALUES (250006, 'STO-20250006', TO_DATE('2024-05-08', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240007, 'STO-20250007', TO_DATE('2024-06-20', 'YYYY-MM-DD'))
+VALUES (250007, 'STO-20250007', TO_DATE('2024-06-20', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240008, 'STO-20250008', TO_DATE('2024-07-14', 'YYYY-MM-DD'))
+VALUES (250008, 'STO-20250008', TO_DATE('2024-07-14', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240009, 'STO-20250009', TO_DATE('2024-08-30', 'YYYY-MM-DD'))
+VALUES (250009, 'STO-20250009', TO_DATE('2024-08-30', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240010, 'STO-20250010', TO_DATE('2024-09-05', 'YYYY-MM-DD'))
+VALUES (250010, 'STO-20250010', TO_DATE('2024-09-05', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240011, 'STO-20250011', TO_DATE('2023-10-18', 'YYYY-MM-DD'))
+VALUES (250011, 'STO-20250011', TO_DATE('2023-10-18', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240012, 'STO-20250012', TO_DATE('2023-11-02', 'YYYY-MM-DD'))
+VALUES (250012, 'STO-20250012', TO_DATE('2023-11-02', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240013, 'STO-20250013', TO_DATE('2023-12-25', 'YYYY-MM-DD'))
+VALUES (250013, 'STO-20250013', TO_DATE('2023-12-25', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240014, 'STO-20250014', TO_DATE('2023-09-09', 'YYYY-MM-DD'))
+VALUES (250014, 'STO-20250014', TO_DATE('2023-09-09', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240015, 'STO-20250015', TO_DATE('2023-08-14', 'YYYY-MM-DD'))
+VALUES (250015, 'STO-20250015', TO_DATE('2023-08-14', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240016, 'STO-20250016', TO_DATE('2022-07-22', 'YYYY-MM-DD'))
+VALUES (250016, 'STO-20250016', TO_DATE('2022-07-22', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240017, 'STO-20250017', TO_DATE('2022-06-05', 'YYYY-MM-DD'))
+VALUES (250017, 'STO-20250017', TO_DATE('2022-06-05', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240018, 'STO-20250018', TO_DATE('2021-05-10', 'YYYY-MM-DD'))
+VALUES (250018, 'STO-20250018', TO_DATE('2021-05-10', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240019, 'STO-20250019', TO_DATE('2021-04-15', 'YYYY-MM-DD'))
+VALUES (250019, 'STO-20250019', TO_DATE('2021-04-15', 'YYYY-MM-DD'))
 INTO Storage (Storage_id, Storage_Barcode, Storage_acquisition_date)
-VALUES (240020, 'STO-20250020', TO_DATE('2020-03-12', 'YYYY-MM-DD'))
+VALUES (250020, 'STO-20250020', TO_DATE('2020-03-12', 'YYYY-MM-DD'))
 SELECT 1 FROM DUAL;
 
 INSERT ALL --DATA INJECTION FOR SUPPLIER
@@ -1020,63 +1020,63 @@ INSERT ALL --DATA INJECTION FOR INVENTORY
     INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                     Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level, Inventory_max_stock_level,
                     Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210001, 'INV1001', 240001,
+VALUES (210001, 'INV1001', 250001,
         50, 'pcs', 'A1',
         10, 200, TO_TIMESTAMP('2025-02-15 09:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Apple')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210002, 'INV1002', 240002,
+VALUES (210002, 'INV1002', 250002,
         120, 'kg', 'B2',
         30, 500, TO_TIMESTAMP('2025-02-16 14:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Flour')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210003, 'INV1003', 240003,
+VALUES (210003, 'INV1003', 250003,
         75, 'liters', 'C3',
         20, 150, TO_TIMESTAMP('2025-02-17 16:45:00', 'YYYY-MM-DD HH24:MI:SS'),
         'Low Stock', 'Milk')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210004, 'INV1004', 240004,
+VALUES (210004, 'INV1004', 250004,
         30, 'pcs', 'A1',
         5, 100, TO_TIMESTAMP('2025-02-18 11:20:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Pen')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210005, 'INV1005', 240005,
+VALUES (210005, 'INV1005', 250005,
         200, 'kg', 'B3',
         50, 500, TO_TIMESTAMP('2025-02-18 13:10:00', 'YYYY-MM-DD HH24:MI:SS'),
         'Out of Stock', 'Sugar')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210006, 'INV1006', 240006,
+VALUES (210006, 'INV1006', 250006,
         150, 'pcs', 'A2',
         10, 300, TO_TIMESTAMP('2025-02-14 08:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Pencil')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210007, 'INV1007', 240007,
+VALUES (210007, 'INV1007', 250007,
         60, 'liters', 'C1',
         20, 180, TO_TIMESTAMP('2025-02-13 10:25:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Juice')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210008, 'INV1008', 240008,
+VALUES (210008, 'INV1008', 250008,
         70, 'pcs', 'B1',
         25, 250, TO_TIMESTAMP('2025-02-12 12:50:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Notepad')
 INTO Inventory (Inventory_id, Inventory_code, Storage_id, Inventory_quantity_in_stock,
                 Inventory_unit_of_measure, Inventory_location, Inventory_min_stock_level,
                 Inventory_max_stock_level, Inventory_last_updated, Inventory_stock_status, Inventory_name)
-VALUES (210009, 'INV1009', 240009,
+VALUES (210009, 'INV1009', 250009,
         80, 'kg', 'A4',
         15, 100, TO_TIMESTAMP('2025-02-11 14:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         'Low Stock', 'Rice')
@@ -1084,7 +1084,7 @@ INTO Inventory (Inventory_id, Inventory_code, Storage_id,
                 Inventory_quantity_in_stock, Inventory_unit_of_measure, Inventory_location,
                 Inventory_min_stock_level, Inventory_max_stock_level, Inventory_last_updated,
                 Inventory_stock_status, Inventory_name)
-VALUES (210010, 'INV1010', 240010,
+VALUES (210010, 'INV1010', 250010,
         30, 'liters', 'C2',
         10, 200, TO_TIMESTAMP('2025-02-10 09:15:00', 'YYYY-MM-DD HH24:MI:SS'),
         'In Stock', 'Oil')
@@ -1100,70 +1100,70 @@ INSERT ALL --DATA INJECTION FOR ASSET
     INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
                 Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
                 Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220001, 'AST2001', 240011, 190001, '202403068790 (KT0565577-D)', 'Electronics',
+VALUES (220001, 'AST2001', 250011, 190001, '202403068790 (KT0565577-D)', 'Electronics',
         TO_DATE('2023-05-01', 'YYYY-MM-DD'), TO_DATE('2025-07-17', 'YYYY-MM-DD'), '5 years',
         'Laptop, 15-inch screen', 'ASTimg01.jpg',
         TO_DATE('2025-01-20', 'YYYY-MM-DD'), TO_DATE('2025-07-20', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220002, 'AST2002', 240012, 190002, '675409873476 (KT8764487-D)', 'Furniture',
+VALUES (220002, 'AST2002', 250012, 190002, '675409873476 (KT8764487-D)', 'Furniture',
         TO_DATE('2022-09-15', 'YYYY-MM-DD'), TO_DATE('2025-07-18', 'YYYY-MM-DD'), '10 years',
         'Office desk, oak wood', 'ASTimg01.jpg',
         TO_DATE('2025-02-05', 'YYYY-MM-DD'), TO_DATE('2026-02-05', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220003, 'AST2003', 240013, 190003, '124376894567 (KT2398639-D)', 'Appliances',
+VALUES (220003, 'AST2003', 250013, 190003, '124376894567 (KT2398639-D)', 'Appliances',
         TO_DATE('2020-03-10', 'YYYY-MM-DD'), TO_DATE('2025-07-19', 'YYYY-MM-DD'), '7 years',
         'Refrigerator, 350L', 'ASTimg01.jpg',
         TO_DATE('2024-11-10', 'YYYY-MM-DD'), TO_DATE('2025-11-10', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220004, 'AST2004', 240014, 190004, '091287410384 (KT8194627-D)', 'Electronics',
+VALUES (220004, 'AST2004', 250014, 190004, '091287410384 (KT8194627-D)', 'Electronics',
         TO_DATE('2021-07-20', 'YYYY-MM-DD'), TO_DATE('2025-07-20', 'YYYY-MM-DD'), '4 years',
         'Smart TV, 55-inch', 'ASTimg01.jpg',
         TO_DATE('2024-08-15', 'YYYY-MM-DD'), TO_DATE('2025-08-15', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220005, 'AST2005', 240015, 190005, '273916503846 (KT8104528-D)', 'Furniture',
+VALUES (220005, 'AST2005', 250015, 190005, '273916503846 (KT8104528-D)', 'Furniture',
         TO_DATE('2020-11-01', 'YYYY-MM-DD'), TO_DATE('2025-07-21', 'YYYY-MM-DD'), '12 years',
         'Office chair, ergonomic', 'ASTimg01.jpg',
         TO_DATE('2024-09-01', 'YYYY-MM-DD'), TO_DATE('2025-09-01', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220006, 'AST2006', 240016, 190006, '189745781423 (KT3409745-D)', 'Electronics',
+VALUES (220006, 'AST2006', 250016, 190006, '189745781423 (KT3409745-D)', 'Electronics',
         TO_DATE('2023-01-10', 'YYYY-MM-DD'), TO_DATE('2025-07-22', 'YYYY-MM-DD'), '6 years',
         'Desktop computer, i7', 'ASTimg01.jpg',
         TO_DATE('2025-02-10', 'YYYY-MM-DD'), TO_DATE('2025-08-10', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220007, 'AST2007', 240017, 190007, '202034569846 (KT2780590-D)', 'Appliances',
+VALUES (220007, 'AST2007', 250017, 190007, '202034569846 (KT2780590-D)', 'Appliances',
         TO_DATE('2022-05-05', 'YYYY-MM-DD'), TO_DATE('2025-07-23', 'YYYY-MM-DD'), '8 years',
         'Microwave, 20L', 'ASTimg01.jpg',
         TO_DATE('2024-12-01', 'YYYY-MM-DD'), TO_DATE('2025-12-01', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220008, 'AST2008', 240018, 190008, '871263204928 (KT7184017-D)', 'Furniture',
+VALUES (220008, 'AST2008', 250018, 190008, '871263204928 (KT7184017-D)', 'Furniture',
         TO_DATE('2023-08-01', 'YYYY-MM-DD'), TO_DATE('2025-07-24', 'YYYY-MM-DD'), '10 years',
         'Filing cabinet, steel', 'ASTimg01.jpg',
         TO_DATE('2025-02-10', 'YYYY-MM-DD'), TO_DATE('2026-02-10', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220009, 'AST2009', 240019, 190009, '248729475629 (KT7193846-D)', 'Electronics',
+VALUES (220009, 'AST2009', 250019, 190009, '248729475629 (KT7193846-D)', 'Electronics',
         TO_DATE('2021-12-20', 'YYYY-MM-DD'), TO_DATE('2025-07-25', 'YYYY-MM-DD'), '5 years',
         'Air conditioner, 1.5HP', 'ASTimg01.jpg',
         TO_DATE('2024-07-15', 'YYYY-MM-DD'), TO_DATE('2025-07-15', 'YYYY-MM-DD'))
 INTO Asset (Asset_id, Asset_code, Storage_id, Supplier_id, Supplier_ssm,
             Asset_category, Asset_start_date, Asset_dispose_date, Asset_lifespan,
             Asset_description, Asset_picture, Asset_last_maintenance_date, Asset_next_maintenance_date)
-VALUES (220010, 'AST2010', 240020, 190010, '274910495736 (KT7105938-D)', 'Appliances',
+VALUES (220010, 'AST2010', 250020, 190010, '274910495736 (KT7105938-D)', 'Appliances',
         TO_DATE('2020-06-15', 'YYYY-MM-DD'), TO_DATE('2025-07-26', 'YYYY-MM-DD'), '7 years',
         'Washing machine, 10kg', 'ASTimg01.jpg',
         TO_DATE('2024-10-01', 'YYYY-MM-DD'), TO_DATE('2025-10-01', 'YYYY-MM-DD'))
