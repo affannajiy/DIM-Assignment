@@ -44,3 +44,18 @@ INTO Customer_Promotion (Customer_id, Customer_personal_email, Promotion_id, Pro
 SELECT 1 FROM DUAL;
 
 commit;
+
+INSERT ALL --DeliveryPerson_Staff
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30001, 'ABC123456', 'WX1234', 60001, 'ahmad.zulkarnain@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30002, 'XYZ987654', 'UV5678', 60002, 'siti.nurhaliza@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30003, 'LMN456789', 'GH9012', 60003, 'lee.chongwei@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30004, 'PQR321654', 'JK3456', 60004, 'nur.aisyah.rahman@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30005, 'DEF654321', 'MN7890', 60005, 'muhammad.farhan@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30006, 'GHI789123', 'OP2345', 60006, 'lim.wei.sheng@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30007, 'STU987321', 'QR6789', 60007, 'kavitha.rajendran@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30008, 'VWX654879', 'ST8901', 60008, 'ariff.hakim@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30009, 'YZA321654', 'UV3456', 60009, 'wong.mei.ling@example.com')
+INTO DeliveryPerson_Staff (DeliveryPerson_id, DeliveryPerson_License, DeliveryPerson_number_plate, Staff_id, Staff_work_email) VALUES (30010, 'BCD987456', 'WX7890', 60010, 'hafiz.iqbal@example.com')
+SELECT 1 FROM DUAL;
+
+commit;
