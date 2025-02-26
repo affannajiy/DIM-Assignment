@@ -1,4 +1,5 @@
 --FULL CREATION
+--NORMAL ENTITY CREATION
 
 CREATE TABLE Person (
                         Person_IC_Num VARCHAR2(20) PRIMARY KEY,
