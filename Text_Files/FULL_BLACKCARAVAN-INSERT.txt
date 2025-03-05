@@ -2831,3 +2831,28 @@ INTO Product_Storage (Product_id, Storage_id) VALUES (110020, 250020)
 SELECT 1 FROM DUAL;
 
 commit;
+
+INSERT ALL --Supplier_Storage
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190001, '202403068790 (KT0565577-D)', 250001)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190002, '675409873476 (KT8764487-D)', 250002)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190003, '124376894567 (KT2398639-D)', 250003)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190004, '091287410384 (KT8194627-D)', 250004)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190005, '273916503846 (KT8104528-D)', 250005)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190006, '189745781423 (KT3409745-D)', 250006)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190007, '202034569846 (KT2780590-D)', 250007)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190008, '871263204928 (KT7184017-D)', 250008)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190009, '248729475629 (KT7193846-D)', 250009)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190010, '274910495736 (KT7105938-D)', 250010)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190001, '202403068790 (KT0565577-D)', 250011)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190002, '675409873476 (KT8764487-D)', 250012)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190003, '124376894567 (KT2398639-D)', 250013)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190004, '091287410384 (KT8194627-D)', 250014)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190005, '273916503846 (KT8104528-D)', 250015)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190006, '189745781423 (KT3409745-D)', 250016)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190007, '202034569846 (KT2780590-D)', 250017)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190008, '871263204928 (KT7184017-D)', 250018)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190009, '248729475629 (KT7193846-D)', 250019)
+INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190010, '274910495736 (KT7105938-D)', 250020)
+SELECT 1 FROM DUAL;
+
+commit;
