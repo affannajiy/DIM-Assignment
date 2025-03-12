@@ -53,70 +53,70 @@ INSERT ALL
 VALUES (20001, 'Ahmad.Haziq@example.com', '690223076543', 5,
         TO_TIMESTAMP('2025-02-12 12:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 13:30:00', 'YYYY-MM-DD HH24:MI:SS'),
-        25.50, 'Dine-in', '01:00:00', 'Business Meeting','123456789')
+        120.50, 'Dine-in', '01:00:00', 'Business Meeting','123456789')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20002, 'Nor.Azman@example.com', '680304065432', 8,
         TO_TIMESTAMP('2025-02-12 18:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 19:15:00', 'YYYY-MM-DD HH24:MI:SS'),
-        35.00, 'Takeaway', '01:15:00', 'Casual Dining','987654321')
+        85.75, 'Takeaway', '01:15:00', 'Casual Dining','987654321')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20003, 'Zainab.Kassim@example.com', '670415054321', 12,
         TO_TIMESTAMP('2025-02-12 14:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 15:00:00', 'YYYY-MM-DD HH24:MI:SS'),
-        15.75, 'Dine-in', '01:00:00', 'Family Gathering','112233445')
+        200.00, 'Dine-in', '01:00:00', 'Family Gathering','112233445')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20004, 'Hassan.Ramzi@example.com', '660526043210', 3,
         TO_TIMESTAMP('2025-02-12 20:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 21:45:00', 'YYYY-MM-DD HH24:MI:SS'),
-        42.90, 'Dine-in', '01:45:00', 'Anniversary Dinner','223344556')
+        50.00, 'Dine-in', '01:45:00', 'Anniversary Dinner','223344556')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20005, 'Fatimah.Ariff@example.com', '650607032109', 9,
         TO_TIMESTAMP('2025-02-12 11:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 12:45:00', 'YYYY-MM-DD HH24:MI:SS'),
-        30.25, 'Dine-in', '01:15:00', 'Lunch Break','334455667')
+        175.20, 'Dine-in', '01:15:00', 'Lunch Break','334455667')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20006, 'Mohamed.Salleh@example.com', '640718021098', 15,
         TO_TIMESTAMP('2025-02-12 17:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 18:45:00', 'YYYY-MM-DD HH24:MI:SS'),
-        50.00, 'Takeaway', '01:15:00', 'Celebration','445566778')
+        95.30, 'Takeaway', '01:15:00', 'Celebration','445566778')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20007, 'Rohani.Ismail@example.com', '630829010987', 7,
         TO_TIMESTAMP('2025-02-12 13:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 14:30:00', 'YYYY-MM-DD HH24:MI:SS'),
-        27.60, 'Dine-in', '01:30:00', 'Work Meeting','556677889')
+        300.00, 'Dine-in', '01:30:00', 'Work Meeting','556677889')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20008, 'Abdul.Rahim@example.com', '620930099876', 2,
         TO_TIMESTAMP('2025-02-12 19:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 20:30:00', 'YYYY-MM-DD HH24:MI:SS'),
-        22.40, 'Takeaway', '01:00:00', 'Quick Meal','667788990')
+        125.40, 'Takeaway', '01:00:00', 'Quick Meal','667788990')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20009, 'Abu.Bakar@example.com', '589175692516', 11,
         TO_TIMESTAMP('2025-02-12 16:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 17:30:00', 'YYYY-MM-DD HH24:MI:SS'),
-        37.80, 'Dine-in', '01:30:00', 'Friendly Hangout','778899001')
+        60.00, 'Dine-in', '01:30:00', 'Friendly Hangout','778899001')
 INTO  Customer (Customer_id, Customer_personal_email, Person_IC_Num, Customer_table_number,
                 Customer_walk_in_date, Customer_walk_out_date, Customer_total_spent,
                 Customer_dining_option, Customer_time_spent, Customer_dining_purpose, Customer_phoneNumber)
 VALUES (20010, 'Zack@example.com', '107692769173', 6,
         TO_TIMESTAMP('2025-02-12 12:00:00', 'YYYY-MM-DD HH24:MI:SS'),
         TO_TIMESTAMP('2025-02-12 13:15:00', 'YYYY-MM-DD HH24:MI:SS'),
-        19.90, 'Takeaway', '01:15:00', 'Solo Meal','889900112')
+        220.75, 'Takeaway', '01:15:00', 'Solo Meal','889900112')
 SELECT 1 FROM DUAL;
 
 commit;
@@ -2828,31 +2828,6 @@ INTO Product_Storage (Product_id, Storage_id) VALUES (110017, 250017)
 INTO Product_Storage (Product_id, Storage_id) VALUES (110018, 250018)
 INTO Product_Storage (Product_id, Storage_id) VALUES (110019, 250019)
 INTO Product_Storage (Product_id, Storage_id) VALUES (110020, 250020)
-SELECT 1 FROM DUAL;
-
-commit;
-
-INSERT ALL --Supplier_Storage
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190001, '202403068790 (KT0565577-D)', 250001)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190002, '675409873476 (KT8764487-D)', 250002)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190003, '124376894567 (KT2398639-D)', 250003)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190004, '091287410384 (KT8194627-D)', 250004)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190005, '273916503846 (KT8104528-D)', 250005)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190006, '189745781423 (KT3409745-D)', 250006)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190007, '202034569846 (KT2780590-D)', 250007)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190008, '871263204928 (KT7184017-D)', 250008)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190009, '248729475629 (KT7193846-D)', 250009)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190010, '274910495736 (KT7105938-D)', 250010)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190001, '202403068790 (KT0565577-D)', 250011)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190002, '675409873476 (KT8764487-D)', 250012)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190003, '124376894567 (KT2398639-D)', 250013)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190004, '091287410384 (KT8194627-D)', 250014)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190005, '273916503846 (KT8104528-D)', 250015)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190006, '189745781423 (KT3409745-D)', 250016)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190007, '202034569846 (KT2780590-D)', 250017)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190008, '871263204928 (KT7184017-D)', 250018)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190009, '248729475629 (KT7193846-D)', 250019)
-INTO Supplier_Storage (Supplier_id, Supplier_ssm, Storage_id) VALUES (190010, '274910495736 (KT7105938-D)', 250020)
 SELECT 1 FROM DUAL;
 
 commit;

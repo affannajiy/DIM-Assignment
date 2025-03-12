@@ -909,14 +909,3 @@ CREATE TABLE Product_Storage (
 );
 
 commit;
-
-CREATE TABLE Supplier_Storage (
-    				 Supplier_id INT,
-    				 Supplier_ssm VARCHAR2 (50),
-    				 Storage_id INT,
-				 PRIMARY KEY (Supplier_id, Supplier_ssm, Storage_id),
-    				 foreign key (Supplier_id, Supplier_ssm) references SUPPLIER(Supplier_id, Supplier_ssm),
-    				 foreign key (Storage_id) references STORAGE (Storage_id)
-);
-
-commit;
