@@ -2615,7 +2615,7 @@ INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180008, 'O008', 11
 INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180009, 'O009', 110009)
 INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180010, 'O010', 110010)
 INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180011, 'O011', 110011)
-INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180012, 'O012', 110013)
+INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180012, 'O012', 110012)
 INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180013, 'O013', 110013)
 INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180014, 'O014', 110014)
 INTO Order_Product (Order_id, Order_code, Product_id) VALUES (180015, 'O015', 110015)
