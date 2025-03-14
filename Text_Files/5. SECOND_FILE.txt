@@ -1,5 +1,3 @@
--- SECOND FILE
-
 SELECT
     Customer.Customer_personal_email,
     SUM(Payment.Payment_total_amount) AS Total_Spent
@@ -9,6 +7,4 @@ JOIN Orders ON Reservation.Reservation_ID = Orders.Reservation_ID
 JOIN Payment ON Orders.Order_ID = Payment.Order_ID
 WHERE Orders.Order_Date = TO_TIMESTAMP('2025-02-19 00:00:00', 'YYYY-MM-DD HH24:MI:SS')
     AND Payment.Payment_Tax < 10
-GROUP BY Customer.Customer_personal_email
-HAVING SUM(Payment.Payment_total_amount) < 200
-ORDER BY Total_Spent;
+GROUP BY Customer.Customer_personal_email;
